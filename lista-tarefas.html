@@ -21,18 +21,20 @@
         </div>
     </header>
 
-
+    <!-- campo para inserção de novas tarefas -->
     <form class="nova-tarefa">
         <div class="not-done "></div>
-        <input type="text" placeholder="Nova tarefa">
+        <!-- input para descrever a tarefa -->
+        <input type="text" placeholder="Nova tarefa" id="novaTarefa">
+        <!-- botão de + para adicionar a tarefa na lista -->
         <button id="btn">
-      <img src="./assets/plus.png" alt="Adicionar Tarefa">
-    </button>
+            <img src="./assets/plus.png" alt="Adicionar Tarefa">
+        </button>
     </form>
 
 
     <ul class="tarefas-pendentes" id="TarefasFazer">
-        <li class="tarefa">
+      <li class="tarefa">
             <div class="not-done"></div>
             <div class="descripcion">
                 <p class="nome">Minha bela tarefa</p>
@@ -52,12 +54,12 @@
                 <p class="nome">Minha bela tarefa</p>
                 <p class="timestamp">Criada: 19/04/20</p>
             </div>
-        </li>
+        </li> 
     </ul>
 
     <h2 class="titulo-concluida">Tarefas concluídas</h2>
     <ul class="titulo-concluida" id="TarefasFeitas">
-        <li class="tarefa">
+    <li class="tarefa">
             <div class="not-done"></div>
             <div class="descripcion">
                 <p class="nome">Minha bela tarefa</p>
@@ -77,10 +79,9 @@
                 <p class="nome">Minha bela tarefa</p>
                 <p class="timestamp">Criada: 19/04/20</p>
             </div>
-        </li>
+        </li> 
     </ul>
-    <script src="script.js"></script>
+    <script src="script-lista.js"></script>
 
 </body>
-
 </html>

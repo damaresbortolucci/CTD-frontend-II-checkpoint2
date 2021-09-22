@@ -103,7 +103,7 @@ a {
 
 .tarefas-pendentes {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 70%;
     list-style: none;
     margin: 2em 15%;
@@ -130,7 +130,7 @@ a {
     background-color: var(--secondary);
 }
 
-.tarefa:first-child .not-done::before {
+/* .tarefa:first-child .not-done::before {
     content: '';
     position: absolute;
     bottom: 100%;
@@ -150,7 +150,7 @@ a {
     height: 4.5em;
     width: 2px;
     background-color: var(--secondary);
-}
+} */
 
 .tarefa .descripcion {
     display: flex;
@@ -191,7 +191,7 @@ a {
 
 .titulo-concluida {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 70%;
     list-style: none;
     margin: 2em 15%;
