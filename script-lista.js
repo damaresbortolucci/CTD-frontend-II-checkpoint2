@@ -1,7 +1,7 @@
 let button = document.getElementById('btn')
 let body = document.querySelector('body')
 let inputNovaTarefa = document.getElementById('novaTarefa')
-
+let inputDataDeTermino = document.getElementById('dataDeTermino')
 
 
 /* window.onload = () => {
@@ -64,9 +64,30 @@ function carregarAPI(){
 //criar nova tarefa inserida pelo usuario 
 button.addEventListener('click', function(event) {
     event.preventDefault()
+    
+    //validação se está preenchendo o campo de tarfa
+    if(inputNovaTarefa.value == ""){
+        alert("Escreva a tarefa antes de envia-la")
+    }
+    else{
 
+        //validação se a descrição da tarefa possui mais de 10 chars
+    if(inputNovaTarefa.value.length < 10 && inputNovaTarefa.value != ""){
+        alert("A descrição da tarefa precisa ter 10 caracters")
+    }
+    else{
+
+        //validação data de termino
+    if(inputDataDeTermino.value == ""){
+        alert("Preencha a data de termino da tarefa antes de envia-la.")
+    }
+    else{
+
+
+        //
     let ulFazer = document.getElementById('TarefasFazer')
     let ulFeitas = document.getElementById('TarefasFeitas')
+
 
     const li = document.createElement('li')
     li.setAttribute('class', 'tarefa')
@@ -91,7 +112,19 @@ button.addEventListener('click', function(event) {
     li.appendChild(divDescricao)
     ulFazer.appendChild(li)
 
+    
     /* limpa o input para escrever uma nova tarefa */
     inputNovaTarefa.value="";
+    inputDataDeTermino.value="";
 
+
+    }    
+    }
+    }
 }) 
+
+//validação de campos vazios
+
+
+//let validarTarefaPreenchido = document.getElementById('novaTarefa')
+
