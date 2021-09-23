@@ -7,6 +7,7 @@ button.addEventListener('click', function (event) {
     login()
 })
 
+// Função para fazer login verificando o nome de usuário
 async function login() {
     const rawResponse = await fetch('https://jsonplaceholder.typicode.com/users?username='+ username.value);
     const content = await rawResponse.json();
