@@ -1,18 +1,24 @@
+const button = document.querySelector('button')
+const username = document.getElementById('username')
 
-let button = document.querySelector('button')
-
-button.addEventListener('click', function(event) {
+button.addEventListener('click', function (event) {
     event.preventDefault()
-   
-    let usuario = document.getElementById('username').value
-
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then((response) => response.json())
-            .then((json) => json.map(json => {
-                if (json.username == usuario) {
-                    alert("Usuário encontrado.")
-                } else {
-                    console.log("Usuário não encontrado.")
-                }
-            }))
+    console.log("user: " + username.value)
+    login()
 })
+
+async function login() {
+    const rawResponse = await fetch('https://jsonplaceholder.typicode.com/users?username='+ username.value);
+    const content = await rawResponse.json();
+    console.log(content)
+    if (content.length === 0) {
+        alert('User not found')
+    } else {
+        alert('Welcome ' + content[0].name)
+        sessionStorage.setItem("userId",  content[0].id);
+        window.location.href = './lista-tarefas.html'
+    }  
+}
+
+
+
