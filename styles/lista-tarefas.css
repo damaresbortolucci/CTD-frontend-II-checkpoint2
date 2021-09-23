@@ -166,9 +166,18 @@ a {
     color: rgb(95, 95, 95);
 }
 
-.tarea .timestamp {
+.tarefa .timestamp {
     font-size: .9em;
     color: rgb(134, 134, 134);
+    /* Dâmares - Acrescentei 22/09 */
+    margin-right: 1em;
+}
+
+ /* Dâmares - Acrescentei 22/09 - div que contem a data e o checkbox*/
+.dataEcheck{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
