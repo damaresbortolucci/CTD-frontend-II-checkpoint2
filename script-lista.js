@@ -4,8 +4,14 @@ let inputNovaTarefa = document.getElementById('novaTarefa')
 let inputDataDeTermino = document.getElementById('dataDeTermino')
 let tarefasFazer = document.getElementById('TarefasFazer');
 let tarefasFeitas = document.getElementById('TarefasFeitas');
+let user = document.querySelector('.user-info > p')
 
-window.onload = getTarefas;
+window.onload = _ => {
+    getTarefas();
+    // Define nomedousuário
+    user.innerHTML = sessionStorage.getItem('userName');
+} 
+
     
 // Função para buscar tarefas na API baseado no id do usuário
 async function getTarefas() {
@@ -87,8 +93,6 @@ button.addEventListener('click', function(event) {
     /* limpa o input para escrever uma nova tarefa */
     inputNovaTarefa.value="";
     inputDataDeTermino.value="";
-
-
     }    
     }
     }

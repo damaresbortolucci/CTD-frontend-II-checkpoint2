@@ -17,6 +17,7 @@ async function login() {
     } else {
         alert('Welcome ' + content[0].name)
         sessionStorage.setItem("userId",  content[0].id);
+        sessionStorage.setItem("userName",  content[0].name);
         window.location.href = './lista-tarefas.html'
     }  
 }
