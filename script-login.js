@@ -41,9 +41,9 @@ async function inLoad() {
     for (let i = 0; i < 100; i++) {
         await loading()
         ctx.beginPath();
-        ctx.lineWidth = 12;
+        ctx.lineWidth = 4;
         ctx.clearRect(0, 0, c.width, c.height);
-        ctx.arc(150, 75, 25, 0, numLoad * Math.PI);
+        ctx.arc(150, 75, 20, 0, numLoad * Math.PI);
         ctx.strokeStyle = "#eaeaea";
         ctx.stroke()
         document.querySelector(".percent").innerHTML = i + 2
@@ -57,6 +57,7 @@ async function inLoad() {
                 document.querySelectorAll("input").forEach(el => el.disabled = false)
                 document.querySelector(".blur").style.display = "none"
                 document.querySelector(".percent").style.display = "none"
+                dots.style.transition = "none"
                 dots.style.color = "transparent"
             }, 1000)
             for (let v = 1; v < 3; v++) {
