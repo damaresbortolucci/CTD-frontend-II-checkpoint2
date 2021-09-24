@@ -15,6 +15,21 @@ canvas{
   margin: 0 auto;
 }
 
+.dots{
+  position: absolute;
+  width: 100vw;
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+  color: transparent;
+  padding-top: 5.8rem;
+  transition: color 0.5s ease-out;
+}
+
+.dots span{
+  margin-right: 0.65rem;
+}
+
 .percent {
   position: absolute;
   font-weight: 600;

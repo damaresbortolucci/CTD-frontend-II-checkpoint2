@@ -46,8 +46,9 @@ async function inLoad() {
         ctx.arc(150, 75, 25, 0, numLoad * Math.PI);
         ctx.strokeStyle = "#eaeaea";
         ctx.stroke()
-        document.querySelector(".percent").innerHTML = i+2
+        document.querySelector(".percent").innerHTML = i + 2
         if (numLoad >= 2) {
+            const dots = document.querySelector(".dots")
             setTimeout(function () {
                 let form = document.querySelector("form")
                 form.style.filter = "none";
@@ -56,7 +57,14 @@ async function inLoad() {
                 document.querySelectorAll("input").forEach(el => el.disabled = false)
                 document.querySelector(".blur").style.display = "none"
                 document.querySelector(".percent").style.display = "none"
+                dots.style.color = "transparent"
             }, 1000)
+            for (let v = 1; v < 3; v++) {
+                if(v==1) dots.style.color = "#c9c9c9"
+                setTimeout(function () {
+                    dots.innerHTML += "<span></span>."
+                }, 250*v)
+            }
         }
     }
 }
