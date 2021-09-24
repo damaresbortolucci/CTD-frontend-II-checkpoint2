@@ -1,33 +1,41 @@
 @import url('./common.css');
 
+
 h1 {
-  color: rgb(116, 116, 116);
-  font-weight: 300;
-  margin-top: 1em;
-  margin-bottom: 4em;
+  color: #141E59;
+  margin-top: rem;
+  margin-bottom: 1.5rem;
+  font-size: 4.8vw;
+}
+
+h2 {
+  color: #141E59;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 3.0vw;
 }
 
 form {
-  position: relative;
-  height: 100vh;
-  width: 30em;
-  background-color: white;
+ 
+  
+  background:linear-gradient(white, #FFD7B1, #FF9486);
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 0 calc(50% - 15em);
-  box-shadow: 0 5px 5px lightgrey;
-  padding: 2em 4em;
-  box-sizing: border-box;
+  margin: 3.2rem 10rem;
+  box-shadow: 0 5px 10px lightgrey;
+  padding: 2.6rem;
+  border-radius: 10px;
+  justify-content: space-evenly;
+   color: #141E59;
 }
 
 form:after {
-  position: absolute;
+
   content: '';
-  width: .7em;
-  height: 100%;
-  top: 0;
-  left: 0;
+  width: 40vh;
+ 
+  
   background: linear-gradient(var(--primary), var(--secondary));
 }
 
@@ -39,12 +47,20 @@ form:after {
   margin-bottom: 2em;
 }
 
-input {
+.image img{
+  height: 100%;
   width: 100%;
-  padding: .4em .5em;
+  border-radius: 50%;
+}
+
+input {
+ 
+  padding: .4rem 2.5rem;
   background-color: var(--app-grey);
-  border: 1px solid var(--app-grey);
-  border-radius: .2em;
+  border: none;
+  border-radius: .5rem;
+  display: block;
+  cursor: pointer;
 }
 
 input:focus {
@@ -53,23 +69,36 @@ input:focus {
 }
 
 label {
-  width: 100%;
+  
   font-weight: 300;
-  margin-bottom: -.1em;
-  margin-top: 1.5em;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+input[type="text"]:hover{
+  background-color:#FFD7B1;
+}
+
+input[type="password"]:hover{
+  background-color: #f5b1a6;
 }
 
 button {
-  padding: .3em 2em;
+  padding: .7em 2em;
   background-color: var(--primary);
   color: white;
-  margin-top: 5em;
+  margin-top: 3rem;
   font-weight: 400;
-  font-size: 1em;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #FF9486;
 }
 
 .form-footer {
   margin-top: auto;
   color: grey;
-  font-size: 2em;
+  font-size: 2rem;
 }

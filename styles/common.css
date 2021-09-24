@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
 
 :root {
-  --primary: #7898FF;
-  --secondary: #8E64C5;
+  --primary: #141E59;
+  --secondary: #6A50A1;
   --app-grey: #F2F2F2;
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+
 }
 
 body {
