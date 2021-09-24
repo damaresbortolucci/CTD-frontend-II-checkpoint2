@@ -1,5 +1,38 @@
 @import url('./common.css');
 
+.canvas{
+  width: 100%;
+  bottom: 50%;
+  position: absolute;
+  z-index: 9;
+  display: flex;
+}
+
+
+canvas{
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.percent {
+  position: absolute;
+  font-weight: 600;
+  color: #c9c9c9;
+  font-size: 14px;
+  padding-top: 4.2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.blur{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 8;
+  background-color: rgba(48, 48, 48, 0.75);
+}
+
 h1 {
   color: rgb(116, 116, 116);
   font-weight: 300;
@@ -19,6 +52,7 @@ form {
   box-shadow: 0 5px 5px lightgrey;
   padding: 2em 4em;
   box-sizing: border-box;
+  filter: blur(4px);
 }
 
 form:after {

@@ -10,17 +10,24 @@
 </head>
 
 <body>
-
+  <div class="canvas">
+    <canvas id="myCanvas">Your browser does not support the
+      HTML5 canvas tag.</canvas>
+      <p class="percent"></p>
+  </div>
+  
+  <div class="blur"></div>
+  
   <form>
     <h1>Login</h1>
     <div class="image"></div>
 
     <label>Usuário:
-      <input type="text" id="username">
+      <input disabled type="text" id="username">
     </label>
 
     <label>Senha:
-      <input type="password">
+      <input disabled type="password" id="password">
     </label>
 
     <button>Entrar</button>
