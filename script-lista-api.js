@@ -1,17 +1,18 @@
 let tarefasFazer = document.getElementById('TarefasFazer');
 let tarefasFeitas = document.getElementById('TarefasFeitas');
-let user = document.querySelector('.user-info > p')
+let username = document.querySelector('.user-info > p')
+let user = JSON.parse(sessionStorage.getItem('user'));
 
 window.onload = _ => {
     getTarefas();
     // Define nomedousuário
-    user.innerHTML = sessionStorage.getItem('userName');
+    username.innerHTML = user.name;
 } 
 
     
 // Função para buscar tarefas na API baseado no id do usuário
 async function getTarefas() {
-    const rawResponse = await fetch('https://jsonplaceholder.typicode.com/todos?userId='+sessionStorage.getItem('userId'));
+    const rawResponse = await fetch('https://jsonplaceholder.typicode.com/todos?userId='+user.id);
     const lista = await rawResponse.json();
     lista.forEach(todo => {
         if (todo.completed) {
