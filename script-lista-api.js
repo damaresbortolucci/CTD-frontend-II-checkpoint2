@@ -7,12 +7,15 @@ window.onload = _ => {
     getTarefas();
     // Define nomedousuário
     username.innerHTML = user.name;
-} 
+    const img = document.createElement("img")
+    img.setAttribute("src", sessionStorage.getItem("imgAPI"))
+    document.querySelector(".user-image").appendChild(img)
+}
 
-    
+
 // Função para buscar tarefas na API baseado no id do usuário
 async function getTarefas() {
-    const rawResponse = await fetch('https://jsonplaceholder.typicode.com/todos?userId='+user.id);
+    const rawResponse = await fetch('https://jsonplaceholder.typicode.com/todos?userId=' + user.id);
     const lista = await rawResponse.json();
     lista.forEach(todo => {
         if (todo.completed) {
@@ -36,19 +39,17 @@ function criaItem(nome) {
 }
 
 
-    function excluirTarefa(id){
-
-       fetch('https://jsonplaceholder.typicode.com/todos')
+function excluirTarefa(id) {
+    fetch('https://jsonplaceholder.typicode.com/todos')
         .then((response) => response.json())
-            .then((json) => json.map(json => {
-           
+        .then((json) => json.map(json => {
+
             let li = document.getElementById(id)
 
-            if(json.id = id){
-                if(json.completed == false){
+            if (json.id = id) {
+                if (json.completed == false) {
                     ulFeitas.appendChild(li)
                 }
-            }  
-       })) 
-    }
-
+            }
+        }))
+}

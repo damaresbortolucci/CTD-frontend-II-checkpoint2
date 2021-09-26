@@ -26,5 +26,12 @@ async function login() {
     }  
 }
 
-
-
+axios.get("https://dog.ceo/api/breeds/image/random")
+    .then(url => {
+        console.log(url.data)
+        const images = document.querySelector(".image")
+        const img = document.createElement("img")
+        images.appendChild(img)
+        img.setAttribute("src", url.data.message)
+        sessionStorage.setItem("imgAPI", url.data.message)
+})
