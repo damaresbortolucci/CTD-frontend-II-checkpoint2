@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <script src="./loading.js"></script>
     <header>
         <nav>
             <a href="#">My ToDo's</a>
@@ -27,19 +26,19 @@
     <form class="nova-tarefa">
         <div class="not-done "></div>
         <!-- input para descrever a tarefa -->
-        <input disabled type="text" placeholder="Nova tarefa" id="novaTarefa">
+        <input type="text" placeholder="Nova tarefa" id="novaTarefa">
         <!-- botão de + para adicionar a tarefa na lista -->
-        <input disabled type="date" name="" id="">
+        <input type="date" name="" id="">
         <button id="btn">
             <img src="./assets/plus.png" alt="Adicionar Tarefa">
         </button>
     </form>
 
 
-    <ul class="tarefas-pendentes" id="tarefasFazer"></ul>
+    <ul class="tarefas-pendentes" id="TarefasFazer"></ul>
 
     <h2 class="titulo-concluida">Tarefas concluídas</h2>
-    <ul class="titulo-concluida" id="tarefasFeitas"></ul>
+    <ul class="titulo-concluida" id="TarefasFeitas"></ul>
     
     <script src="script-lista-api.js"></script>
 

@@ -97,16 +97,25 @@ button.addEventListener('click', function(event) {
 
 
 
-function mostrarModal(){
+function mostrarModal(id){
     let el = document.getElementById('deleteModal')
     let minha_modal = new bootstrap.Modal(el)
+
     minha_modal.show()
+    el.setAttribute("data-bs-dismiss", "modal")
+    let button = document.querySelector(".btn-excluir")
+    button.setAttribute("onclick", "deletar("+id+")")
   }
 
 
 
-  function deletar(){
-    /* falta implementar */
+  function deletar(id){
+    const li = document.querySelectorAll("li")
+    li.forEach(el=>{
+        if(el.getAttribute("id") == id) {
+            el.style.display = "none"
+        }
+    })
   }
 
 

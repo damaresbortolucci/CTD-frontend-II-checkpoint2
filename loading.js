@@ -17,10 +17,6 @@ divCanvas.appendChild(canvas)
 divCanvas.appendChild(p)
 divCanvas.appendChild(divDot)
 
-const blur = document.createElement("div")
-blur.setAttribute("class", "blur")
-body.appendChild(blur)
-
 
 let c = document.getElementById("myCanvas");
 let ctx = c.getContext("2d");
@@ -85,11 +81,8 @@ const stopEffect = () => {
 }
 
 window.onload = () => {
-    if (!localStorage.getItem("loaded")) {
-        inLoad()
-        localStorage.setItem("loaded", true)
-    }
-    else {
-        stopEffect()
-    }
+    const blur = document.createElement("div")
+    blur.setAttribute("class", "blur")
+    document.querySelector("body").appendChild(blur)
+    inLoad()
 }

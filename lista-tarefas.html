@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <script src="./loading.js"></script>
     <header>
         <nav>
             <a href="#">My ToDo's</a>
@@ -28,12 +27,12 @@
     <form class="nova-tarefa">
         <div class="not-done "></div>
         <!-- input para descrever a tarefa -->
-        <input disabled type="text" placeholder="Nova tarefa" id="novaTarefa">
+        <input type="text" placeholder="Nova tarefa" id="novaTarefa">
         <!-- botão de + para adicionar a tarefa na lista -->
         <button id="btn">
             <img src="./assets/plus.png" alt="Adicionar Tarefa">
         </button>
-        <input disabled type="date" placeholder="data de termino" id= "dataDeTermino">
+        <input type="date" placeholder="data de termino" id= "dataDeTermino">
     </form>
 
 
@@ -119,7 +118,7 @@
               <p>Tem certeza de que deseja excluir essa tarefa?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" onclick="deletar()">Excluir</button>
+              <button type="button" class="btn btn-danger btn-excluir">Excluir</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
           </div>
