@@ -110,7 +110,6 @@ button.addEventListener('click', function(event) {
         indexCard+=1;
         criarCards(indexCard, inputNovaTarefa.value)
 
-
         //pega os dados do localstorage
         let getObj = JSON.parse(localStorage.getItem('tarefas'));
 
@@ -156,7 +155,6 @@ button.addEventListener('click', function(event) {
             localStorage.setItem('tarefas', JSON.stringify(arrayObjetos));
             indexCard = arrayObjetos[0].id;
         }    
-
         /* limpa o input para escrever uma nova tarefa */
         inputNovaTarefa.value="";
         inputDataDeTermino.value="";
@@ -189,8 +187,6 @@ function mostrarModal(id){
     } else {
         localStorage.removeItem('tarefas');
     }
-    
-    // recarrega a página após a exclusão do card
     document.location.reload(true);
   }
 
@@ -206,31 +202,23 @@ function riscar(id){
     for(let i=0; i < ulPendentes.length; i++){
         if(checkbox[i].checked){
         
-            ulFeitas.appendChild(ulPendentes[i])  
+            //criar ou atualizar os cards de tarefas riscadas
+           let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
 
-        
-            //ESTOU DESENVOLVENDO AINDA ESSA PARTE DO CODIGO
-
-           //atualizar cards de tarefas feitas 
-           /* let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
-
-            if(arrayFeitas != null){
-                let newObj = {"tarefa": ulPendentes[i].tarefa}
-                arrayFeitas.push(newObj)
-                localStorage.removeItem('tarefasFeitas');
-                localStorage.setItem('tarefasFeitas', JSON.stringify(arrayFeitas));
-            }else{
-
+            if(arrayFeitas === null){
                 let tarefaFeita = [];
-                tarefaFeita.push(
-                    {tarefa: listaTarefas[i].tarefa}
-                    )
+                tarefaFeita.push({tarefa: listaTarefas[i].tarefa})
                 localStorage.removeItem('tarefasFeitas');
                 localStorage.setItem('tarefasFeitas', JSON.stringify(tarefaFeita));
+             
+            }else{
+                arrayFeitas.push({tarefa: listaTarefas[i].tarefa})
+                localStorage.removeItem('tarefasFeitas');
+                localStorage.setItem('tarefasFeitas', JSON.stringify(arrayFeitas));
             }
 
 
-           //atualizar os cards de tarefas a fazer 
+           //atualizar os cards de tarefas a fazer excluindo o card riscado
            let arrayTarefas = JSON.parse(localStorage.getItem('tarefas'))
            let index = arrayTarefas.findIndex(element => element.id == id)
 
@@ -240,10 +228,9 @@ function riscar(id){
                 localStorage.setItem('tarefas', arrayJson)
             } else {
                 localStorage.removeItem('tarefas');
-            } */
+            }
         }
-        
     }
-    /* document.location.reload(true); */
+    document.location.reload(true);
 }
 
