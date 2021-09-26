@@ -236,3 +236,7 @@ p{
     color: grey;
     text-decoration: line-through;
 }
+
+input[type="checkbox"]:disabled {
+    background-color: initial;
+}
