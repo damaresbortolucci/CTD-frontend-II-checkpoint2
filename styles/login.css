@@ -27,8 +27,8 @@ form {
 }
 
 .image {
-  height: 40%;
-  width: 50%;
+  height: 176px;
+  width: 176px;
   padding:  0;
   border-radius: 50%;
   background-color: var(--app-grey);
