@@ -1,17 +1,21 @@
 let tarefasFazer = document.getElementById('TarefasFazer');
 let tarefasFeitas = document.getElementById('TarefasFeitas');
-let user = document.querySelector('.user-info > p')
+let username = document.querySelector('.user-info > p')
+let user = JSON.parse(sessionStorage.getItem('user'));
 
 window.onload = _ => {
     getTarefas();
     // Define nomedousuário
-    user.innerHTML = sessionStorage.getItem('userName');
-} 
+    username.innerHTML = user.name;
+    const img = document.createElement("img")
+    img.setAttribute("src", sessionStorage.getItem("imgAPI"))
+    document.querySelector(".user-image").appendChild(img)
+}
 
-    
+
 // Função para buscar tarefas na API baseado no id do usuário
 async function getTarefas() {
-    const rawResponse = await fetch('https://jsonplaceholder.typicode.com/todos?userId='+sessionStorage.getItem('userId'));
+    const rawResponse = await fetch('https://jsonplaceholder.typicode.com/todos?userId=' + user.id);
     const lista = await rawResponse.json();
     lista.forEach(todo => {
         if (todo.completed) {
@@ -35,19 +39,17 @@ function criaItem(nome) {
 }
 
 
-    function excluirTarefa(id){
-
-       fetch('https://jsonplaceholder.typicode.com/todos')
+function excluirTarefa(id) {
+    fetch('https://jsonplaceholder.typicode.com/todos')
         .then((response) => response.json())
-            .then((json) => json.map(json => {
-           
+        .then((json) => json.map(json => {
+
             let li = document.getElementById(id)
 
-            if(json.id = id){
-                if(json.completed == false){
+            if (json.id = id) {
+                if (json.completed == false) {
                     ulFeitas.appendChild(li)
                 }
-            }  
-       })) 
-    }
-
+            }
+        }))
+}

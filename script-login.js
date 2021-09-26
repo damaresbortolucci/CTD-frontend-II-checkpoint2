@@ -1,5 +1,6 @@
 const button = document.querySelector('button')
 const username = document.getElementById('username')
+const password = document.querySelector("input[type='password']")
 
 button.addEventListener('click', function (event) {
     event.preventDefault()
@@ -15,12 +16,22 @@ async function login() {
     if (content.length === 0) {
         alert('User not found')
     } else {
-        alert('Welcome ' + content[0].name)
-        sessionStorage.setItem("userId",  content[0].id);
-        sessionStorage.setItem("userName",  content[0].name);
-        window.location.href = './lista-tarefas-api.html'
+        if (password.value === username.value) {
+            alert('Welcome ' + content[0].name)
+            sessionStorage.setItem("user", JSON.stringify(content[0]));
+            window.location.href = './lista-tarefas-api.html'
+        } else {
+            alert('Wrong password')
+        }
     }  
 }
 
-
-
+axios.get("https://dog.ceo/api/breeds/image/random")
+    .then(url => {
+        console.log(url.data)
+        const images = document.querySelector(".image")
+        const img = document.createElement("img")
+        images.appendChild(img)
+        img.setAttribute("src", url.data.message)
+        sessionStorage.setItem("imgAPI", url.data.message)
+})
