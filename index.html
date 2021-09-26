@@ -5,31 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/loading.css">
     <link rel="stylesheet" href="./styles/login.css">
     <title>ToDo</title>
 </head>
 
 <body>
-  <div class="canvas">
-    <canvas id="myCanvas">Your browser does not support the
-      HTML5 canvas tag.</canvas>
-      <p class="percent"></p>
-      <div class="dots">.</div>
-  </div>
-  
-  <div class="blur"></div>
+  <script src="./loading.js"></script>
   
   <form>
     <h1>Login</h1>
     <div class="image"></div>
 
     <label>Usuário:
-      <input disabled type="text" id="username">
     </label>
+    <input disabled type="text" id="username">
 
     <label>Senha:
-      <input disabled type="password" id="password">
     </label>
+    <input disabled type="password" id="password">
 
     <button>Entrar</button>
 
@@ -37,6 +31,7 @@
       <p>ToDo</p>
     </div>
   </form>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script-login.js"></script>
 
 </body>
