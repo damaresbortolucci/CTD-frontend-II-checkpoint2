@@ -19,21 +19,30 @@ async function getTarefas() {
     const lista = await rawResponse.json();
     lista.forEach(todo => {
         if (todo.completed) {
-            tarefasFeitas.appendChild(criaItem(todo.title));
+            tarefasFeitas.appendChild(criaItem(todo.id, todo.title));
         } else {
-            tarefasFazer.appendChild(criaItem(todo.title));
+            tarefasFazer.appendChild(criaItem(todo.id, todo.title));
         }
     });
 }
 
 // Função para criar um item da lista
-function criaItem(nome) {
+function criaItem(id, tarefa) {
     const item = document.createElement('li')
-    item.innerHTML = `<li class="tarefa">
-    <div class="not-done"></div>
-    <div class="descripcion">
-        <p class="nome">${nome}</p>
-    </div>
+    item.innerHTML = `
+    <li class="tarefa" id="${id}">
+        <div>
+            <button class="not-done" onclick="excluirTarefa(${id})"></button>
+        </div>
+        <div class="descripcion">
+            <div>
+                <span>${id}</span>
+                <span class="nome">${tarefa}</span>
+            </div>
+            <div class="dataEcheck">
+                <p class="timestamp">Criada: 19/04/20</p>
+            </div>
+        </div>
     </li>`
     return item;
 }
@@ -48,7 +57,7 @@ function excluirTarefa(id) {
 
             if (json.id = id) {
                 if (json.completed == false) {
-                    ulFeitas.appendChild(li)
+                    tarefasFeitas.appendChild(li)
                 }
             }
         }))

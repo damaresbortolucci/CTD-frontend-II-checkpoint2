@@ -75,7 +75,6 @@ function criarCards(id, input){
 
 //CRIAR CARDS DE TAREFAS RISCADAS COM O CHECKBOX (FEITAS)
 function criarCardFeitas(input){
-
     ulFeitas.innerHTML += `
     <li class="tarefa">
             <div class="not-done"></div>
@@ -86,8 +85,7 @@ function criarCardFeitas(input){
                     <input type="checkbox" name="" id="">
                 </div>
             </div>
-        </li>
-    `
+        </li>`
 }
 
 
@@ -210,7 +208,8 @@ function riscar(id){
         
             ulFeitas.appendChild(ulPendentes[i])  
 
-
+        
+            //ESTOU DESENVOLVENDO AINDA ESSA PARTE DO CODIGO
 
            //atualizar cards de tarefas feitas 
            /* let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
