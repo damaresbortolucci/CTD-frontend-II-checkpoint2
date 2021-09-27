@@ -1,80 +1,143 @@
 @import url('./common.css');
 
+canvas {
+  display: none;
+}
+
 body{
-  background-color: rgb(201, 201, 201);
+  display: flex;
+  background-color: rgb(241, 241, 241);
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 h1 {
+  font-size: 1.5rem;
   color: rgb(116, 116, 116);
-  font-weight: 350;
+  font-weight: 800;
+  margin-bottom: 2rem;
 }
 
 form {
-  position: absolute;
-  height: 90vh;
-  top: 2.5em;
-  width: 30em;
+  width: 80vw;
+  position: relative;
   background-color: white;
-  display: flex;
-  align-items: center;
-  margin: 0 calc(50% - 15em);
-  flex-direction: column;
-  box-shadow: 1px -0.5px 5px rgb(80, 80, 80);
-  padding: 1em 4em;
-  box-sizing: border-box;
-  border-radius: 25px 25px;
-  filter: blur(4px);
+  max-width: 350px;
+  min-height: 40vh;
+  padding: 2rem 2rem 1rem 2rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0 8px 8px 0;
 }
 
-.image {
-  height: 176px;
-  width: 176px;
-  padding:  0;
-  border-radius: 50%;
-  background-color: var(--app-grey);
-  margin-bottom: 2em;
-  margin-top: 3rem;
+form::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 10px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  top: 0;
+  left: -10px;
+  border-radius: 8px 0 0 8px;
 }
 
 input {
-  width: 80%;
-  background-color: var(--app-grey);
-  border: 1px solid var(--app-grey);
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
   border-radius: .2em;
-  margin-bottom: 2rem;
+  margin-bottom: .6rem;
   padding: .4em .5em;
 }
 
 input:focus {
   outline: none;
-  border: 1px solid lightgrey;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-container .underline::before {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+  background-color: rgb(226, 226, 226);
+}
+
+.input-container .underline::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+  background: linear-gradient(to left, var(--primary), var(--secondary));
+  transform: scaleX(0);
+}
+
+.input-container input:focus ~ .underline::after {
+  transform: scaleX(1);
 }
 
 label {
-  width: 80%;
+  position: absolute;
+  font-size: 1rem;
+  left: 5px;
+  top: 5px;
+  width: 100%;
   font-weight: 300;
+  pointer-events: none;
+  transition:0.2s ease all;
+  color: gray;
+}
+
+input:focus ~ label, input:valid ~ label {
+  top: -5px;
+  font-size: .6rem;
+  color: var(--primary);
+}
+
+.error-message {
+  display: none;
+  position: absolute;
+  font-size: .7rem;
+  left: 5px;
+  bottom: -7px;
+  color: red;
 }
 
 button {
-  padding: .3em 2em;
-  background-color: var(--primary);
+  padding: .4em 2em;
+  background: linear-gradient(to left, var(--primary), var(--secondary));
   color: white;
-  margin-top: 2em;
+  margin-top: 1rem;
   font-weight: 400;
   font-size: 1em;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to left, var(--secondary), var(--primary));
+  letter-spacing: 0.3px;
 }
 
 .form-footer {
-  margin-top: 1rem;
+  display: flex;
+  margin-top: 0.5rem;
+  justify-content: center;
   color: grey;
   font-weight: 300;
   font-size: 1.6em;
 }
 
-.image img{
-  max-width: 176px;
-  max-height: 176px;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+#logo {
+  width: 5rem;
 }

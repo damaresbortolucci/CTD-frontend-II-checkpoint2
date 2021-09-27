@@ -66,7 +66,7 @@ p{
 
 .nova-tarefa input[type=text] {
     border: none;
-    flex: 1;
+    width: 70%;
     border-bottom: 1px solid lightgrey;
     border-radius: 0;
     padding: .3em;
@@ -198,35 +198,43 @@ p{
     font-size: 1em;
     color: rgb(134, 134, 134);
     /* Dâmares - Acrescentei 22/09 */
-    margin-right: 1em;
 }
 
 
  /* Dâmares - Acrescentei 22/09 - div que contem a data e o checkbox*/
 .dataEcheck{
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     align-items: center;
     position: relative;
-    top: 135px;
-    left: 37px;
+    top: 125px;
+    left: 8.2px;
+    font-size: 12px;
 }
 
 /* Tarefas concluídas ----------------------------------------------------------- */
 
 #tarefas{
-    margin: 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100vw;
+    margin: 4rem 0;
+    display: flex;
+    justify-content: space-around;
 }
 
 .tarefas-pendentes,
 .titulo-concluida {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
-    width: 300px;
     list-style: none;
-    margin: 0 auto;
+}
+
+.tarefas-pendentes,
+.titulo-concluida{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 50%;
+    height: 300px;
 }
 
 .titulo-concluida .not-done {
@@ -256,6 +264,7 @@ input[type=checkbox] {
     position: relative;
     cursor: pointer;
 }
+
 input[type=checkbox]:before {
     content: "";
     display: block;
@@ -266,6 +275,5 @@ input[type=checkbox]:before {
     left: 0;
     border: 2px solid rgb(92, 145, 95);
     border-radius: 3px;
-    background: url(../assets/check.svg);
     background-color: rgb(92, 145, 95);
 }
