@@ -1,7 +1,7 @@
 @import url('./common.css');
 header {
     display: flex;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: linear-gradient(90deg, #19547b, #ffd89b);
     box-shadow: 0px 3px 5px lightgrey;
     padding: 0 3em;
     margin-bottom: 2em;
@@ -101,24 +101,35 @@ p{
     width: 100%;
 }
 
-.not-done {
+.not-done, .button-input {
     width: 2em;
     height: 2em;
-    background-color: var(--app-grey);
-    margin-right: 1em;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.not-done img{
+    width: 60%;
+    height: 65%;
+    margin-bottom: 6.5px;
+}
+
+.button-input{
+    background-color: var(--app-grey);
+    margin-right: 1em;
 }
 
 
 /* Lista de tarefas ----------------------------------------------------------- */
 
-.tarefas-pendentes {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 70%;
-    list-style: none;
-    margin: 2em 15%;
+#div-cut{
+    width: 20px;
+    height: 50px;
+    background-color: #F6F6F6;
+    position: relative;
+    bottom: 93px;
+    left: 42px;
+    transform: rotate(45deg);
 }
 
 .tarefa {
@@ -129,17 +140,17 @@ p{
 
 .tarefa .not-done {
     position: relative;
-    height: 1.5em;
-    width: 1.5em;
-    background-color: white;
-    box-shadow: 2px 2px 5px lightgrey;
-    border: 2px solid var(--secondary);
+    height: 1.3em;
+    width: 1.3em;
+    bottom: 75px;
+    left: 187px;
+    background-color: rgb(104, 104, 104);
     z-index: 2;
     transition: background-color 200ms linear;
 }
 
 .tarefa .not-done:hover {
-    background-color: var(--secondary);
+    background-color: gray;
 }
 
 /* .tarefa:first-child .not-done::before {
@@ -165,57 +176,57 @@ p{
 } */
 
 .tarefa .descripcion {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex: 1;
+    width: 200px;
+    height: 200px;
     background-color: white;
-    padding: 1em 2em;
+    padding: 0 1.5em;
     box-shadow: 2px 2px 5px lightgrey;
+    border-left: #19547b 2px solid;
+    border-radius: 10px;
 }
 
-.tarefa .nome {
-    margin-left: 1em;
+.tarefa .nome,
+#tarefa-api {
+    word-break: break-all;
     color: rgb(95, 95, 95);
+    margin-top: 2rem;
+    height: 0;
 }
 
 .tarefa .timestamp {
-    font-size: .9em;
+    font-size: 1em;
     color: rgb(134, 134, 134);
     /* Dâmares - Acrescentei 22/09 */
     margin-right: 1em;
 }
+
 
  /* Dâmares - Acrescentei 22/09 - div que contem a data e o checkbox*/
 .dataEcheck{
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
+    top: 135px;
+    left: 37px;
 }
 
 /* Tarefas concluídas ----------------------------------------------------------- */
 
-.titulo-concluida {
-    position: relative;
-    width: 8em;
-    text-align: center;
-    padding: .5em 1em;
-    background-color: white;
-    border-radius: .2em;
-    box-shadow: 3px 3px 5px lightgrey;
-    color: rgb(170, 170, 170);
-    font-weight: 400;
-    font-size: 1.1em;
-    margin-left: calc(15% - 4em);
-    z-index: 20;
+#tarefas{
+    margin: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.tarefas-pendentes,
 .titulo-concluida {
     display: flex;
-    flex-direction: column-reverse;
-    width: 70%;
+    flex-direction: column;
+    width: 300px;
     list-style: none;
-    margin: 2em 15%;
+    margin: 0 auto;
 }
 
 .titulo-concluida .not-done {
@@ -239,4 +250,22 @@ p{
 
 input[type="checkbox"]:disabled {
     background-color: initial;
+}
+
+input[type=checkbox] {
+    position: relative;
+    cursor: pointer;
+}
+input[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    border: 2px solid rgb(92, 145, 95);
+    border-radius: 3px;
+    background: url(../assets/check.svg);
+    background-color: rgb(92, 145, 95);
 }

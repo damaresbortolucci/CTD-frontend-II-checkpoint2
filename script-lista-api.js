@@ -35,7 +35,7 @@ function criaItem(id, tarefa) {
             <button class="not-done" onclick="excluirTarefa(${id})"></button>
         </div>
         <div class="descripcion">
-            <div>
+            <div id="tarefa-api">
                 <span>${id}</span>
                 <span class="nome">${tarefa}</span>
             </div>

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/loading.css">
     <link rel="stylesheet" href="./styles/lista-tarefas.css">
     <title>ToDo</title>
@@ -25,19 +26,19 @@
 
     <!-- campo para inserção de novas tarefas -->
     <form class="nova-tarefa">
-        <div class="not-done "></div>
+        <div class="button-input"></div>
         <!-- input para descrever a tarefa -->
         <input type="text" placeholder="Nova tarefa" id="novaTarefa">
-        <input type="date" placeholder="data de termino" id= "dataDeTermino">
+        <input type="date" placeholder="data de termino" id="dataDeTermino">
         <!-- botão de + para adicionar a tarefa na lista -->
         <button id="btn">
             <img src="./assets/plus.png" alt="Adicionar Tarefa">
         </button>
     </form>
 
-
-    <ul class="tarefas-pendentes" id="TarefasFazer">
-        <!-- <li class="tarefa">
+    <div id="tarefas">
+        <ul class="tarefas-pendentes" id="TarefasFazer">
+            <!-- <li class="tarefa">
             <div class="not-done">
             </div> 
             <div class="descripcion">
@@ -48,43 +49,46 @@
                 </div>
             </div>
         </li> -->
-    </ul>
+        </ul>
 
-    <h2 class="titulo-concluida">Tarefas concluídas</h2>
-    <ul class="titulo-concluida" id="TarefasFeitas">
-    <li class="tarefa">
-            <div class="not-done"></div>
-            <div class="descripcion">
-                <p class="nome">Minha bela tarefa</p>
-                <div class="dataEcheck">
-                    <p class="timestamp">Criada: 19/04/20</p>
+        <ul class="titulo-concluida" id="TarefasFeitas">
+            <li class="tarefa">
+                <div id="div-cut"></div>
+                <div class="not-done"></div>
+                <div class="descripcion">
+                    <p class="nome">Minha bela tarefa</p>
+                    <div class="dataEcheck">
+                        <p class="timestamp">19/04/20</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir tarefa</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Tem certeza de que deseja excluir essa tarefa?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-excluir">Excluir</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-        </li>
-    </ul>
-
-     <!-- modal -->
-     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Excluir tarefa</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-              <p>Tem certeza de que deseja excluir essa tarefa?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger btn-excluir">Excluir</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <script src="script-lista.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 
 </body>
+
 </html>

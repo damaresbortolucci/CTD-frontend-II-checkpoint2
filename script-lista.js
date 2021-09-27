@@ -34,15 +34,17 @@ window.onload = _ => {
 
 
 //CRIAR NOVOS CARDS
-function criarCards(id, input){
+function criarCards(id, input, date){
     const li = document.createElement('li')
     li.setAttribute('class', 'tarefa tarefaFazer')
     li.setAttribute('id', id)
 
     const divNotDone = document.createElement('div') //div que contem o botão de exclusao 
     const btnNotDone = document.createElement('button') // botão para excluir a tarefa 
+    const xButton = document.createElement("img")
     btnNotDone.setAttribute('class', 'not-done')
     btnNotDone.setAttribute('onclick', 'mostrarModal('+id+')') //(chama o modal)
+    xButton.setAttribute("src", "./assets/close.svg")
 
     const divDescricao = document.createElement('div') // div que contem o p com descrição da tarefa
     divDescricao.setAttribute('class', 'descripcion')
@@ -56,17 +58,23 @@ function criarCards(id, input){
 
     const p2 = document.createElement('p') //data de criaçao
     p2.setAttribute('class', 'timestamp')
+    p2.innerText = date
 
     const inputCheckBox = document.createElement('input') // checkbox
     inputCheckBox.setAttribute('type', 'checkbox')
     inputCheckBox.setAttribute('id', 'checkbox')
     inputCheckBox.setAttribute('onclick', 'riscar('+id+')')
 
+    const divCorte = document.createElement("div")
+    divCorte.setAttribute("id", "div-cut")
+
+    btnNotDone.appendChild(xButton)
     dataEcheck.appendChild(p2)
     dataEcheck.appendChild(inputCheckBox)
     divDescricao.appendChild(p)
     divDescricao.appendChild(dataEcheck)
     divNotDone.appendChild(btnNotDone)
+    li.appendChild(divCorte)
     li.appendChild(divNotDone)
     li.appendChild(divDescricao)
     ulFazer.appendChild(li)
@@ -99,6 +107,7 @@ function criarCards(id, input){
 function criarCardFeitas(input){
     ulFeitas.innerHTML += `
     <li class="tarefa">
+            <div id="div-cut"></div>
             <div class="not-done"></div>
             <div class="descripcion">
                 <p class="nome">${input}</p>
@@ -129,7 +138,7 @@ button.addEventListener('click', function(event) {
 
         let arrayObjetos = []; //se o localstorage estiver vazio, o novo card será armazenado aqui
         indexCard+=1;
-        criarCards(indexCard, inputNovaTarefa.value)
+        criarCards(indexCard, inputNovaTarefa.value, inputDataDeTermino.value)
 
         //pega os dados do localstorage
         let getObj = JSON.parse(localStorage.getItem('tarefas'));
