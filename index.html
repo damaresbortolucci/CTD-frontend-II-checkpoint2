@@ -15,18 +15,26 @@
   
   <form>
     <h1>Login</h1>
-    <div class="image"></div>
 
-    <label>Usuário:</label>
-    <input disabled type="text" id="username">
+    <div class="input-container">
+      <input required disabled type="text" id="username">
+      <label>Usuário</label>
+      <div class="underline"></div>
+      <span class="error-message" id="error-user">teste</span>
+    </div>
+    
 
-    <label>Senha:</label>
-    <input disabled type="password" id="password">
-
+    <div class="input-container">
+      <input required disabled type="password" id="password">
+      <label>Senha</label>
+      <div class="underline"></div>
+      <span class="error-message" id="error-password">teste</span>
+    </div>
+    
     <button>Entrar</button>
 
     <div class="form-footer">
-      <p>ToDo</p>
+      <img src="./assets/logo.svg" alt="logo todo" id="logo">
     </div>
   </form>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

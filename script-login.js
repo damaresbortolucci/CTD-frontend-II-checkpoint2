@@ -1,6 +1,8 @@
 const button = document.querySelector('button')
 const username = document.getElementById('username')
 const password = document.querySelector("input[type='password']")
+const errorPassword = document.getElementById('error-password')
+const errorUser = document.getElementById('error-user')
 
 button.addEventListener('click', function (event) {
     event.preventDefault()
@@ -13,17 +15,33 @@ async function login() {
     const rawResponse = await fetch('https://jsonplaceholder.typicode.com/users?username='+ username.value);
     const content = await rawResponse.json();
     console.log(content)
-    if (content.length === 0) {
-        alert('User not found')
+    if (username.value.length === 0) {
+        errorUser.style.display = 'block'
+        exibeErro('Informe um usuário', errorUser)
+    } else if (content.length === 0) {
+        exibeErro('Usuário não encontrado', errorUser)
     } else {
-        if (password.value === username.value) {
-            alert('Welcome ' + content[0].name)
-            sessionStorage.setItem("user", JSON.stringify(content[0]));
-            window.location.href = './lista-tarefas-api.html'
-        } else {
-            alert('Wrong password')
+        switch (password.value) {
+            case "":
+                errorPassword.style.display = 'block'
+                exibeErro('Informe uma senha', errorPassword)
+                break;
+            case username.value:
+                sessionStorage.setItem("user", JSON.stringify(content[0]));
+                window.location.href = './lista-tarefas-api.html'
+                errorPassword.style.display = 'none'
+                errorUser.style.display = 'none'
+                break;
+            default:
+                errorUser.style.display = 'none'
+                exibeErro('Senha incorreta', errorPassword)
         }
     }  
+}
+
+function exibeErro(erro, elemento) {
+    elemento.style.display = 'block'
+    elemento.innerHTML = erro
 }
 
 axios.get("https://dog.ceo/api/breeds/image/random")
