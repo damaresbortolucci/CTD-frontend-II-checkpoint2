@@ -19,7 +19,7 @@ window.onload = _ => {
         //pega o ultimo id no localstorage e armazena na variável de novo para criar os novos cards
         indexCard =  arrayTarefas.lastIndex
         arrayTarefas.forEach((element) => {
-            criarCards(element.id, element.tarefa);
+            criarCards(element.id, element.tarefa, element.termino);
         });
     }
 
@@ -34,7 +34,7 @@ window.onload = _ => {
 
 
 //CRIAR NOVOS CARDS
-function criarCards(id, input){
+function criarCards(id, inputTarefa, inputData){
     const li = document.createElement('li')
     li.setAttribute('class', 'tarefa tarefaFazer')
     li.setAttribute('id', id)
@@ -49,20 +49,33 @@ function criarCards(id, input){
 
     const p = document.createElement('p') //descrição da tarefa
     p.setAttribute('class', 'nome' )
-    p.innerHTML = input
+    p.innerHTML = inputTarefa
  
     const dataEcheck = document.createElement('div') //div que contem a data de criação e checkbox
     dataEcheck.setAttribute('class', 'dataEcheck')
 
     const p2 = document.createElement('p') //data de criaçao
     p2.setAttribute('class', 'timestamp')
+    let n =  new Date();
+    let y = n.getFullYear();
+    let m = n.getMonth() + 1;
+    let d = n.getDate();
+    p2.innerHTML = 'Criação: ' + d + "/" + m + "/" + y;
+
+
+    const p3 = document.createElement('p') // data de termino
+    p3.setAttribute('id', 'dataFim')
+    p3.innerHTML = "Término: " + inputData
+
 
     const inputCheckBox = document.createElement('input') // checkbox
     inputCheckBox.setAttribute('type', 'checkbox')
     inputCheckBox.setAttribute('id', 'checkbox')
     inputCheckBox.setAttribute('onclick', 'riscar('+id+')')
 
+
     dataEcheck.appendChild(p2)
+    dataEcheck.appendChild(p3)
     dataEcheck.appendChild(inputCheckBox)
     divDescricao.appendChild(p)
     divDescricao.appendChild(dataEcheck)
@@ -70,28 +83,6 @@ function criarCards(id, input){
     li.appendChild(divNotDone)
     li.appendChild(divDescricao)
     ulFazer.appendChild(li)
-
-    
-    //NESSE MÉTODO ABAIXO ESTÁ GERANDO PROBLEMA NA HORA DE ATRIBUIR UM ID PARA ALGUNS TAREFAS
-    // POR ISSO NÃO USEI
-
-    /* let ulFazer = document.getElementById('TarefasFazer')
-    ulFazer.innerHTML += `
-    <li class="tarefa tarefaFazer" id="${id}">
-        <div>
-            <button class="not-done" onclick="mostrarModal(${id})"></button>
-        </div>
-        <div class="descripcion">
-            <div>
-                <span>${id}</span>
-                <span class="nome">${input}</span>
-            </div>
-            <div class="dataEcheck">
-                <p class="timestamp">Criada: 19/04/20</p>
-                <input type="checkbox" id="checkbox" onclick="riscar(${id})">
-            </div>
-        </div>
-    </li>` */
    
 }
 
@@ -102,9 +93,6 @@ function criarCardFeitas(input){
             <div class="not-done"></div>
             <div class="descripcion">
                 <p class="nome">${input}</p>
-                <div class="dataEcheck">
-                    <p class="timestamp">Criada: 19/04/20</p>
-                </div>
             </div>
         </li>`
 }
@@ -129,7 +117,7 @@ button.addEventListener('click', function(event) {
 
         let arrayObjetos = []; //se o localstorage estiver vazio, o novo card será armazenado aqui
         indexCard+=1;
-        criarCards(indexCard, inputNovaTarefa.value)
+        criarCards(indexCard, inputNovaTarefa.value, inputDataDeTermino.value)
 
         //pega os dados do localstorage
         let getObj = JSON.parse(localStorage.getItem('tarefas'));
@@ -142,7 +130,7 @@ button.addEventListener('click', function(event) {
             indexCard =  getObj[0].lastIndex + 1;
     
             //cria o card da tarefa que usuario esta escolhendo
-            let newObj = {"id": indexCard, "tarefa": inputNovaTarefa.value, "lastIndex": indexCard}
+            let newObj = {"id": indexCard, "tarefa": inputNovaTarefa.value, "termino": inputDataDeTermino.value, "lastIndex": indexCard}
     
             /* Todos os obj recebem o lastindex o ultimo ID sera recuperado */
             getObj.forEach(element => {
@@ -157,12 +145,15 @@ button.addEventListener('click', function(event) {
             localStorage.removeItem('tarefas');
             /* Insere o array temporario convertido em JSON no localStorage */
             localStorage.setItem('tarefas', JSON.stringify(arrayObjetos));
+                        //passa a data de termino para os cards criados
+  
 
         } else {
             arrayObjetos.push(
                 {
                     id: indexCard,
                     tarefa: inputNovaTarefa.value,
+                    termino: inputDataDeTermino.value,
                     lastIndex: indexCard
                 }
             );
@@ -172,7 +163,10 @@ button.addEventListener('click', function(event) {
             /* Insere o array temporario convertido em JSON no localStorage */
             localStorage.setItem('tarefas', JSON.stringify(arrayObjetos));
             indexCard = arrayObjetos[0].id;
-        }    
+        }   
+        
+        
+   
         /* limpa o input para escrever uma nova tarefa */
         inputNovaTarefa.value="";
         inputDataDeTermino.value="";
