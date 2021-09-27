@@ -1,31 +1,30 @@
-let button = document.getElementById('btn')
-let body = document.querySelector('body')
-let inputNovaTarefa = document.getElementById('novaTarefa')
+let button = document.getElementById('btn') //botão de + do formulário
+let body = document.querySelector('body') 
+let inputNovaTarefa = document.getElementById('novaTarefa') // input de text para inserir nova tarefa
 let inputDataDeTermino = document.getElementById('dataDeTermino')
-let ulFazer = document.getElementById('TarefasFazer')
-let ulFeitas = document.getElementById('TarefasFeitas')
+let ulFazer = document.getElementById('TarefasFazer') // UL das tarefas a fazer
+let ulFeitas = document.getElementById('TarefasFeitas') // UL das tarefa feitas
 let indexCard=0; //contador do id
 
 
 window.onload = _ => {
 
-    /* recupera array de tarefas a fazer */
+    //recupera array de tarefas a fazer
     let arrayTarefas = JSON.parse(localStorage.getItem('tarefas'));
-    /* recupera array de tarefas a feitas */
+    //recupera array de tarefas feitas
     let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
 
-    //recria cards das tarefas a fazer na tela
+    //recria cards das tarefas a fazer
     if(arrayTarefas != null){
+        //pega o ultimo id no localstorage e armazena na variável de novo para criar os novos cards
         indexCard =  arrayTarefas.lastIndex
-        //Percorre array do local storage para criar cards 
         arrayTarefas.forEach((element) => {
             criarCards(element.id, element.tarefa);
         });
     }
 
-    //recria cards das tarefas feitas e  riscadas pelo checkbox
+    //recria cards das tarefas feitas (riscadas pelo checkbox)
     if(arrayFeitas != null){
-        //Percorre array do local storage para criar cards 
         arrayFeitas.forEach((element) => {
             criarCardFeitas(element.tarefa);
         });
@@ -36,29 +35,29 @@ window.onload = _ => {
 
 //CRIAR NOVOS CARDS
 function criarCards(id, input){
-
     const li = document.createElement('li')
     li.setAttribute('class', 'tarefa tarefaFazer')
     li.setAttribute('id', id)
 
-    const btnNotDone = document.createElement('div')
+    const divNotDone = document.createElement('div') //div que contem o botão de exclusao 
+    const btnNotDone = document.createElement('button') // botão para excluir a tarefa 
     btnNotDone.setAttribute('class', 'not-done')
-    btnNotDone.setAttribute('onclick', 'mostrarModal('+id+')')
+    btnNotDone.setAttribute('onclick', 'mostrarModal('+id+')') //(chama o modal)
 
-    const divDescricao = document.createElement('div')
+    const divDescricao = document.createElement('div') // div que contem o p com descrição da tarefa
     divDescricao.setAttribute('class', 'descripcion')
 
-    const p = document.createElement('p')
+    const p = document.createElement('p') //descrição da tarefa
     p.setAttribute('class', 'nome' )
     p.innerHTML = input
  
-    const dataEcheck = document.createElement('div')
+    const dataEcheck = document.createElement('div') //div que contem a data de criação e checkbox
     dataEcheck.setAttribute('class', 'dataEcheck')
 
-    const p2 = document.createElement('p')
+    const p2 = document.createElement('p') //data de criaçao
     p2.setAttribute('class', 'timestamp')
 
-    const inputCheckBox = document.createElement('input')
+    const inputCheckBox = document.createElement('input') // checkbox
     inputCheckBox.setAttribute('type', 'checkbox')
     inputCheckBox.setAttribute('id', 'checkbox')
     inputCheckBox.setAttribute('onclick', 'riscar('+id+')')
@@ -67,9 +66,32 @@ function criarCards(id, input){
     dataEcheck.appendChild(inputCheckBox)
     divDescricao.appendChild(p)
     divDescricao.appendChild(dataEcheck)
-    li.appendChild(btnNotDone)
+    divNotDone.appendChild(btnNotDone)
+    li.appendChild(divNotDone)
     li.appendChild(divDescricao)
     ulFazer.appendChild(li)
+
+    
+    //NESSE MÉTODO ABAIXO ESTÁ GERANDO PROBLEMA NA HORA DE ATRIBUIR UM ID PARA ALGUNS TAREFAS
+    // POR ISSO NÃO USEI
+
+    /* let ulFazer = document.getElementById('TarefasFazer')
+    ulFazer.innerHTML += `
+    <li class="tarefa tarefaFazer" id="${id}">
+        <div>
+            <button class="not-done" onclick="mostrarModal(${id})"></button>
+        </div>
+        <div class="descripcion">
+            <div>
+                <span>${id}</span>
+                <span class="nome">${input}</span>
+            </div>
+            <div class="dataEcheck">
+                <p class="timestamp">Criada: 19/04/20</p>
+                <input type="checkbox" id="checkbox" onclick="riscar(${id})">
+            </div>
+        </div>
+    </li>` */
    
 }
 
@@ -82,7 +104,6 @@ function criarCardFeitas(input){
                 <p class="nome">${input}</p>
                 <div class="dataEcheck">
                     <p class="timestamp">Criada: 19/04/20</p>
-                    <input type="checkbox" name="" id="">
                 </div>
             </div>
         </li>`
@@ -106,7 +127,7 @@ button.addEventListener('click', function(event) {
     }
     else{
 
-        let arrayObjetos = [];
+        let arrayObjetos = []; //se o localstorage estiver vazio, o novo card será armazenado aqui
         indexCard+=1;
         criarCards(indexCard, inputNovaTarefa.value)
 
@@ -116,7 +137,6 @@ button.addEventListener('click', function(event) {
         //se já existirem tarefas no localstorage
         if(getObj != null) {
 
-            
             let getObj = JSON.parse(localStorage.getItem('tarefas'));
             //Recupera id atual no lastIndex 
             indexCard =  getObj[0].lastIndex + 1;
@@ -135,7 +155,6 @@ button.addEventListener('click', function(event) {
     
             /* Apaga localStorage para receber array atualizado com cards antigos e novos */
             localStorage.removeItem('tarefas');
-    
             /* Insere o array temporario convertido em JSON no localStorage */
             localStorage.setItem('tarefas', JSON.stringify(arrayObjetos));
 
@@ -150,7 +169,6 @@ button.addEventListener('click', function(event) {
 
             /* Apaga localStorage para receber array atualizado com cards antigos e novos */
             localStorage.removeItem('tarefas');
-    
             /* Insere o array temporario convertido em JSON no localStorage */
             localStorage.setItem('tarefas', JSON.stringify(arrayObjetos));
             indexCard = arrayObjetos[0].id;
@@ -200,10 +218,11 @@ function riscar(id){
     let listaTarefas = JSON.parse(localStorage.getItem('tarefas'))
     
     for(let i=0; i < ulPendentes.length; i++){
-        if(checkbox[i].checked){
         
+        if(checkbox[i].checked){
+
             //criar ou atualizar os cards de tarefas riscadas
-           let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
+            let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
 
             if(arrayFeitas === null){
                 let tarefaFeita = [];
