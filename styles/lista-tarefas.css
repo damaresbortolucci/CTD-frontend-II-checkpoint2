@@ -1,10 +1,20 @@
 @import url('./common.css');
+
+
 header {
     display: flex;
     background: linear-gradient(90deg, #19547b, #ffd89b);
     box-shadow: 0px 3px 5px lightgrey;
     padding: 0 3em;
     margin-bottom: 2em;
+}
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
 a {
@@ -49,14 +59,14 @@ p{
 }
 
 
-/* Novas tarefa ----------------------------------------------------------- */
+/* Novas tarefa - formulário ------------------------------------------------- */
 
 .nova-tarefa {
     position: relative;
     display: flex;
     align-items: center;
     background-color: white;
-    width: 80%;
+    width: 70%;
     margin: 0 10%;
     padding: 1em;
     box-shadow: 2px 2px 10px lightgrey;
@@ -127,54 +137,58 @@ p{
     height: 50px;
     background-color: #F6F6F6;
     position: relative;
-    bottom: 93px;
-    left: 42px;
+    bottom: -3.1em;
+    left: -5.5em;
     transform: rotate(45deg);
 }
 
-.tarefa {
+/* div com TODOS os cards */
+#tarefas{
+    width: 75vw;
+    margin: 4rem 0;
     display: flex;
-    align-items: center;
-    margin-bottom: 1.5em;
 }
 
+
+/* div que contem grupo de card de pendentes e div com cards concluidas */
+.tarefas-pendentes,
+.titulo-concluida {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    width: 50%;
+}
+
+
+/* div de CADA card */
+.tarefa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.7em;
+}
+
+
+/* botao para excluir */
 .tarefa .not-done {
     position: relative;
     height: 1.3em;
     width: 1.3em;
-    bottom: 75px;
-    left: 187px;
+    bottom: -2em;
+    left: 5em;
     background-color: rgb(104, 104, 104);
     z-index: 2;
     transition: background-color 200ms linear;
 }
 
 .tarefa .not-done:hover {
-    background-color: gray;
+    background-color: #19547b;
 }
 
-/* .tarefa:first-child .not-done::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: calc(.75em - 1px);
-    display: block;
-    height: 3em;
-    width: 2px;
-    background-color: var(--secondary);
-}
 
-.tarefa:not(:last-child) .not-done::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: calc(.75em - 1px);
-    display: block;
-    height: 4.5em;
-    width: 2px;
-    background-color: var(--secondary);
-} */
-
+/* texto da tarefa */
 .tarefa .descripcion {
     align-items: center;
     width: 200px;
@@ -201,7 +215,7 @@ p{
 }
 
 
- /* Dâmares - Acrescentei 22/09 - div que contem a data e o checkbox*/
+ /* div que contem a data e o checkbox*/
 .dataEcheck{
     display: flex;
     justify-content: space-between;
@@ -213,29 +227,17 @@ p{
     font-size: 12px;
 }
 
+
+
 /* Tarefas concluídas ----------------------------------------------------------- */
 
-#tarefas{
-    width: 100vw;
-    margin: 4rem 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-.tarefas-pendentes,
-.titulo-concluida {
-    /* display: flex; */
-    flex-direction: column;
-    list-style: none;
-}
-
-.tarefas-pendentes,
+/* .tarefas-pendentes,
 .titulo-concluida{
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 50%;
     height: 300px;
-}
+} */
 
 .titulo-concluida .not-done {
     background-color: lightgrey;
@@ -273,7 +275,7 @@ input[type=checkbox]:before {
     height: 16px;
     top: 0;
     left: 0;
-    border: 2px solid rgb(92, 145, 95);
+    border: 2px solid rgb(139, 167, 140);
     border-radius: 3px;
-    background-color: rgb(92, 145, 95);
+    background-color: rgb(139, 167, 140);
 }
