@@ -31,8 +31,10 @@ function criaItem(id, tarefa) {
     const item = document.createElement('li')
     item.innerHTML = `
     <li class="tarefa" id="${id}">
+        <div id="div-cut"></div>
         <div>
-            <button class="not-done" onclick="excluirTarefa(${id})"></button>
+            <button class="not-done" onclick="excluirTarefa(${id})">
+            </button>
         </div>
         <div class="descripcion">
             <div id="tarefa-api">

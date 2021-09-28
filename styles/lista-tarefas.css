@@ -283,3 +283,13 @@ input[type=checkbox]:before {
     border-radius: 3px;
     background-color: rgb(139, 167, 140);
 }
+
+
+
+
+
+
+/* p de data de termoino */
+.dataDeTermino{
+    margin-left: 3em;
+}
