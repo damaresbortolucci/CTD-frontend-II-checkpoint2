@@ -41,8 +41,10 @@ function criarCards(id, inputTarefa, inputData){
 
     const divNotDone = document.createElement('div') //div que contem o botão de exclusao 
     const btnNotDone = document.createElement('button') // botão para excluir a tarefa 
+    const xButton = document.createElement("img")
     btnNotDone.setAttribute('class', 'not-done')
     btnNotDone.setAttribute('onclick', 'mostrarModal('+id+')') //(chama o modal)
+    xButton.setAttribute("src", "./assets/close.svg")
 
     const divDescricao = document.createElement('div') // div que contem o p com descrição da tarefa
     divDescricao.setAttribute('class', 'descripcion')
@@ -73,13 +75,17 @@ function criarCards(id, inputTarefa, inputData){
     inputCheckBox.setAttribute('id', 'checkbox')
     inputCheckBox.setAttribute('onclick', 'riscar('+id+')')
 
+    const divCorte = document.createElement("div")
+    divCorte.setAttribute("id", "div-cut")
 
+    btnNotDone.appendChild(xButton)
     dataEcheck.appendChild(p2)
     dataEcheck.appendChild(p3)
     dataEcheck.appendChild(inputCheckBox)
     divDescricao.appendChild(p)
     divDescricao.appendChild(dataEcheck)
     divNotDone.appendChild(btnNotDone)
+    li.appendChild(divCorte)
     li.appendChild(divNotDone)
     li.appendChild(divDescricao)
     ulFazer.appendChild(li)
@@ -90,6 +96,7 @@ function criarCards(id, inputTarefa, inputData){
 function criarCardFeitas(input){
     ulFeitas.innerHTML += `
     <li class="tarefa">
+            <div id="div-cut"></div>
             <div class="not-done"></div>
             <div class="descripcion">
                 <p class="nome">${input}</p>
@@ -110,6 +117,9 @@ button.addEventListener('click', function(event) {
     else if(inputNovaTarefa.value.length < 10 && inputNovaTarefa.value != ""){
         alert("A descrição da tarefa precisa ter 10 caracters")
     }
+    else if(inputNovaTarefa.value.length > 80){
+        alert("A descrição da tarefa precisa ter menos de 80 caracteres")
+    }
     else if(inputDataDeTermino.value == ""){
         alert("Preencha a data de termino da tarefa antes de envia-la.")
     }
@@ -117,7 +127,9 @@ button.addEventListener('click', function(event) {
 
         let arrayObjetos = []; //se o localstorage estiver vazio, o novo card será armazenado aqui
         indexCard+=1;
-        criarCards(indexCard, inputNovaTarefa.value, inputDataDeTermino.value)
+        let data = new Date(inputDataDeTermino.value)
+        let dataFormatada = ((data.getDate()+1 )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()
+        criarCards(indexCard, inputNovaTarefa.value, dataFormatada)
 
         //pega os dados do localstorage
         let getObj = JSON.parse(localStorage.getItem('tarefas'));
@@ -130,7 +142,7 @@ button.addEventListener('click', function(event) {
             indexCard =  getObj[0].lastIndex + 1;
     
             //cria o card da tarefa que usuario esta escolhendo
-            let newObj = {"id": indexCard, "tarefa": inputNovaTarefa.value, "termino": inputDataDeTermino.value, "lastIndex": indexCard}
+            let newObj = {"id": indexCard, "tarefa": inputNovaTarefa.value, "termino": dataFormatada, "lastIndex": indexCard}
     
             /* Todos os obj recebem o lastindex o ultimo ID sera recuperado */
             getObj.forEach(element => {
@@ -153,7 +165,7 @@ button.addEventListener('click', function(event) {
                 {
                     id: indexCard,
                     tarefa: inputNovaTarefa.value,
-                    termino: inputDataDeTermino.value,
+                    termino: dataFormatada,
                     lastIndex: indexCard
                 }
             );
@@ -169,7 +181,7 @@ button.addEventListener('click', function(event) {
    
         /* limpa o input para escrever uma nova tarefa */
         inputNovaTarefa.value="";
-        inputDataDeTermino.value="";
+        dataFormatada="";
     }
 }) 
 
