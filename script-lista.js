@@ -11,6 +11,23 @@ let nav = document.getElementById('nav-tarefas')
 let msgErro = document.getElementById('msgErro')
 
 
+
+/* Limitar data do input data de término */
+let data = new Date();
+let ano = data.getUTCFullYear();
+let mes = data.getMonth() + 1;
+let dia = data.getDate();
+if(dia<10){
+    dia= '0' + dia;
+}
+if(mes<10){
+    mes='0'+mes;
+}
+let hoje = ano + "-" + mes + "-" + dia;
+document.getElementById("dataDeTermino").setAttribute('min', hoje)
+
+
+
 window.onload = _ => {
     axios.get("https://dog.ceo/api/breeds/image/random")
     .then(url => {
@@ -101,7 +118,6 @@ function criarCards(id, inputTarefa, inputData){
     dataEcheck.appendChild(p3)
     divRodape.appendChild(dataEcheck)
     divRodape.appendChild(inputCheckBox)
-    
     divTarefas.appendChild(divCorte)
     divTarefas.appendChild(divNotDone)
     divTarefas.appendChild(divDescricao)
@@ -120,6 +136,7 @@ function criarCardFeitas(input){
             </div>
         </div>`
 }
+
 
 
 
@@ -168,7 +185,6 @@ button.addEventListener('click', function(event) {
             localStorage.removeItem('tarefas');
             localStorage.setItem('tarefas', JSON.stringify(arrayDeTarefas));
 
-
         } else {
             arrayDeTarefas.push(
                 {
@@ -203,8 +219,8 @@ function mostrarModal(id){
 
 
 
-  //deletar um card pelo botao excluir do modal
-  function deletar(id){
+//deletar um card pelo botao excluir do modal
+function deletar(id){
     let arrayTarefas = JSON.parse(localStorage.getItem('tarefas'))
     let index = arrayTarefas.findIndex(element => element.id == id)
 
@@ -221,7 +237,7 @@ function mostrarModal(id){
 
 
 
-  // riscar card pelo checkbox e passar para a lista de tarefas feitas abaixo
+// riscar card pelo checkbox e passar para a lista de tarefas feitas abaixo
 function riscar(id){
     let checkbox = document.querySelectorAll('#checkbox')
     let ulPendentes = document.querySelectorAll('.tarefaFazer')
@@ -245,7 +261,6 @@ function riscar(id){
                 localStorage.removeItem('tarefasFeitas');
                 localStorage.setItem('tarefasFeitas', JSON.stringify(arrayFeitas));
             }
-
 
            //atualizar os cards de tarefas a fazer excluindo o card riscado
            let arrayTarefas = JSON.parse(localStorage.getItem('tarefas'))

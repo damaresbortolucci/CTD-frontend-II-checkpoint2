@@ -112,6 +112,27 @@ p#dataFim{
     margin: 0 1em;
 }
 
+.nova-tarefa input[type="date"] {
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185b9d8f, #43cea275); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 0.1em 0.5em;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+::-webkit-calendar-picker-indicator{
+    background-color: white;
+    padding: 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+
+
 .nova-tarefa input:focus {
     outline: none;
     border-bottom: 1px solid grey;
@@ -309,12 +330,15 @@ input[type=checkbox]:before {
     background-color: #18899d;
 }
 
+/* div com datas de criação, término e checkbox */
 .rodapeCard{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: -3.5em;
 }
+
+
 
 
 /* tablets e larger smartphones */
