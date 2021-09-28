@@ -80,8 +80,12 @@ const stopEffect = () => {
     document.querySelector(".percent").style.display = "none"
 }
 
+if(!localStorage.getItem("isloaded")){
+    const blur = document.createElement("div")
+    blur.setAttribute("class", "blur")
+    document.querySelector("body").appendChild(blur)
+    inLoad()
+    localStorage.setItem("isloaded", true)
+} else{
 
-const blur = document.createElement("div")
-blur.setAttribute("class", "blur")
-document.querySelector("body").appendChild(blur)
-inLoad()
+}
