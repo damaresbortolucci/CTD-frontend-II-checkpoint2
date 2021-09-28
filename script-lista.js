@@ -12,6 +12,12 @@ let msgErro = document.getElementById('msgErro')
 
 
 window.onload = _ => {
+    axios.get("https://dog.ceo/api/breeds/image/random")
+    .then(url => {
+        const img = document.createElement("img")
+        img.setAttribute("src", url.data.message)
+        document.querySelector(".user-image").appendChild(img)
+    })
     //recupera array de tarefas a fazer
     let arrayTarefas = JSON.parse(localStorage.getItem('tarefas'));
     //recupera array de tarefas feitas

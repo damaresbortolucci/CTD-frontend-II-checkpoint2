@@ -80,9 +80,8 @@ const stopEffect = () => {
     document.querySelector(".percent").style.display = "none"
 }
 
-window.onload = () => {
-    const blur = document.createElement("div")
-    blur.setAttribute("class", "blur")
-    document.querySelector("body").appendChild(blur)
-    inLoad()
-}
+
+const blur = document.createElement("div")
+blur.setAttribute("class", "blur")
+document.querySelector("body").appendChild(blur)
+inLoad()
