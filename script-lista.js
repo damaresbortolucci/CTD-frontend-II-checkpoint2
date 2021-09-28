@@ -5,6 +5,9 @@ let inputDataDeTermino = document.getElementById('dataDeTermino')
 let ulFazer = document.getElementById('TarefasFazer') // UL das tarefas a fazer
 let ulFeitas = document.getElementById('TarefasFeitas') // UL das tarefa feitas
 let indexCard=0; //contador do id
+let username = document.querySelector('.user-info > p')
+let user = JSON.parse(sessionStorage.getItem('user'));
+let nav = document.getElementById('nav-tarefas')
 
 
 window.onload = _ => {
@@ -13,6 +16,8 @@ window.onload = _ => {
     let arrayTarefas = JSON.parse(localStorage.getItem('tarefas'));
     //recupera array de tarefas feitas
     let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
+    username.innerHTML = user.name;
+    nav.style.borderBottom = ".2rem solid white";
 
     //recria cards das tarefas a fazer
     if(arrayTarefas != null){

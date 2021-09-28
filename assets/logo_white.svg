@@ -4,13 +4,6 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M90.9604 150C113.582 150 131.921 130.748 131.921 107C131.921 83.2518 113.582 64 90.9604 64C68.3386 64 50 83.2518 50 107C50 130.748 68.3386 150 90.9604 150ZM113.299 105.307C116.23 102.38 116.234 97.6317 113.307 94.7006C110.38 91.7695 105.632 91.766 102.701 94.6928L85.6787 111.69L77.6563 107.21C74.0398 105.191 69.471 106.486 67.4516 110.102C65.4323 113.719 66.7271 118.288 70.3437 120.307L83.3127 127.548C86.2399 129.183 89.8961 128.676 92.2685 126.307L113.299 105.307Z" fill="white"/>
 </mask>
 <g mask="url(#mask0)">
-<rect x="-101" y="8" width="506" height="185" fill="url(#paint0_linear)"/>
+<rect x="-101" y="8" width="506" height="185" fill="white"/>
 </g>
-<defs>
-<linearGradient id="paint0_linear" x1="316.5" y1="-42.5" x2="-32.5" y2="315.5" gradientUnits="userSpaceOnUse">
-<stop offset="0.00271725" stop-color="#43CEA2"/>
-<stop offset="0.9999" stop-color="#8E64C5" stop-opacity="0.395833"/>
-<stop offset="1" stop-color="#185A9D"/>
-</linearGradient>
-</defs>
 </svg>

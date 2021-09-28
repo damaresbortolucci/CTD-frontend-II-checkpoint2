@@ -2,14 +2,15 @@ let tarefasFazer = document.getElementById('TarefasFazer');
 let tarefasFeitas = document.getElementById('TarefasFeitas');
 let username = document.querySelector('.user-info > p')
 let user = JSON.parse(sessionStorage.getItem('user'));
-
+let nav = document.getElementById('nav-lista');
 window.onload = _ => {
     getTarefas();
     // Define nomedousuário
     username.innerHTML = user.name;
-    const img = document.createElement("img")
+    const img = document.createElement("img")   
     img.setAttribute("src", sessionStorage.getItem("imgAPI"))
     document.querySelector(".user-image").appendChild(img)
+    nav.style.borderBottom = ".2rem solid white"
 }
 
 
