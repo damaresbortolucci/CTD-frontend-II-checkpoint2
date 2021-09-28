@@ -8,10 +8,10 @@ let indexCard=0; //contador do id
 let username = document.querySelector('.user-info > p')
 let user = JSON.parse(sessionStorage.getItem('user'));
 let nav = document.getElementById('nav-tarefas')
+let msgErro = document.getElementById('msgErro')
 
 
 window.onload = _ => {
-
     //recupera array de tarefas a fazer
     let arrayTarefas = JSON.parse(localStorage.getItem('tarefas'));
     //recupera array de tarefas feitas
@@ -40,9 +40,9 @@ window.onload = _ => {
 
 //CRIAR NOVOS CARDS
 function criarCards(id, inputTarefa, inputData){
-    const li = document.createElement('li')
-    li.setAttribute('class', 'tarefa tarefaFazer')
-    li.setAttribute('id', id)
+    const divTarefas = document.createElement('div')
+    divTarefas.setAttribute('class', 'tarefa tarefaFazer')
+    divTarefas.setAttribute('id', id)
 
     const divNotDone = document.createElement('div') //div que contem o botão de exclusao 
     const btnNotDone = document.createElement('button') // botão para excluir a tarefa 
@@ -58,7 +58,6 @@ function criarCards(id, inputTarefa, inputData){
     p.setAttribute('class', 'nome' )
     p.innerHTML = inputTarefa
  
-
     const dataEcheck = document.createElement('div') //div que contem a data de criação e checkbox
     dataEcheck.setAttribute('class', 'dataEcheck')
 
@@ -74,17 +73,10 @@ function criarCards(id, inputTarefa, inputData){
     p3.setAttribute('id', 'dataFim')
     p3.innerHTML = "Término: " + inputData
 
-
-  /*   const divCheck = document.createElement('div')
-    divCheck.appendChild(inputCheckBox) */
-
-
-
     const inputCheckBox = document.createElement('input') // checkbox
     inputCheckBox.setAttribute('type', 'checkbox')
     inputCheckBox.setAttribute('id', 'checkbox')
     inputCheckBox.setAttribute('onclick', 'riscar('+id+')')
-
 
     const divRodape = document.createElement('div')
     divRodape.setAttribute('class', 'rodapeCard')
@@ -92,46 +84,35 @@ function criarCards(id, inputTarefa, inputData){
     divRodape.appendChild(dataEcheck)
     divRodape.appendChild(inputCheckBox)
 
-
-
     const divCorte = document.createElement("div")
     divCorte.setAttribute("id", "div-cut")
 
 
-
-
     btnNotDone.appendChild(xButton)
     divNotDone.appendChild(btnNotDone)
-
     divDescricao.appendChild(p)
-
     dataEcheck.appendChild(p2)
     dataEcheck.appendChild(p3)
-
     divRodape.appendChild(dataEcheck)
     divRodape.appendChild(inputCheckBox)
     
-    
-    
-    li.appendChild(divCorte)
-    li.appendChild(divNotDone)
-    li.appendChild(divDescricao)
-    li.appendChild(divRodape)
-
-    ulFazer.appendChild(li)
-   
+    divTarefas.appendChild(divCorte)
+    divTarefas.appendChild(divNotDone)
+    divTarefas.appendChild(divDescricao)
+    divTarefas.appendChild(divRodape)
+    ulFazer.appendChild(divTarefas)
 }
 
 //CRIAR CARDS DE TAREFAS RISCADAS COM O CHECKBOX (FEITAS)
 function criarCardFeitas(input){
     ulFeitas.innerHTML += `
-        <li class="tarefa">
+        <div class="tarefa">
             <div id="div-cut"></div>
             <div class="not-done"></div>
             <div class="descripcion">
                 <p class="nome">${input}</p>
             </div>
-        </li>`
+        </div>`
 }
 
 
@@ -142,73 +123,60 @@ button.addEventListener('click', function(event) {
 
     //validação se está preenchendo o campo de tarfa
     if(inputNovaTarefa.value == ""){
-        alert("Escreva a tarefa antes de envia-la")
+        msgErro.innerHTML = "Escreva a tarefa antes de envia-la"
     }
     else if(inputNovaTarefa.value.length < 10 && inputNovaTarefa.value != ""){
-        alert("A descrição da tarefa precisa ter 10 caracters")
+        msgErro.innerHTML = "A descrição da tarefa precisa ter no mínimo 10 caracteres"
     }
     else if(inputNovaTarefa.value.length > 80){
-        alert("A descrição da tarefa precisa ter menos de 80 caracteres")
+        msgErro.innerHTML = "A descrição da tarefa precisa ter menos de 80 caracteres"
     }
     else if(inputDataDeTermino.value == ""){
-        alert("Preencha a data de termino da tarefa antes de envia-la.")
+        msgErro.innerHTML = "Preencha a data de termino da tarefa antes de envia-la."
     }
     else{
 
-        let arrayObjetos = []; //se o localstorage estiver vazio, o novo card será armazenado aqui
+        let arrayDeTarefas = []; //se o localstorage estiver vazio, o novo card será armazenado aqui
         indexCard+=1;
         let data = new Date(inputDataDeTermino.value)
         let dataFormatada = ((data.getDate()+1 )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()
         criarCards(indexCard, inputNovaTarefa.value, dataFormatada)
 
-        //pega os dados do localstorage
-        let getObj = JSON.parse(localStorage.getItem('tarefas'));
+
+        let tarefasStorage = JSON.parse(localStorage.getItem('tarefas'));
 
         //se já existirem tarefas no localstorage
-        if(getObj != null) {
+        if(tarefasStorage != null) {
 
-            let getObj = JSON.parse(localStorage.getItem('tarefas'));
-            //Recupera id atual no lastIndex 
-            indexCard =  getObj[0].lastIndex + 1;
+            let tarefasStorage = JSON.parse(localStorage.getItem('tarefas'));
+            indexCard =  tarefasStorage[0].lastIndex + 1;
     
-            //cria o card da tarefa que usuario esta escolhendo
-            let newObj = {"id": indexCard, "tarefa": inputNovaTarefa.value, "termino": dataFormatada, "lastIndex": indexCard}
-    
-            /* Todos os obj recebem o lastindex o ultimo ID sera recuperado */
-            getObj.forEach(element => {
+            let novaTarefa = {"id": indexCard, "tarefa": inputNovaTarefa.value, "termino": dataFormatada, "lastIndex": indexCard}
+
+            tarefasStorage.forEach(element => {
                 element.lastIndex = indexCard;
-                arrayObjetos.push(element);
+                arrayDeTarefas.push(element);
             });
     
-            /* Insere dados do novo card no array de objetos temporario */
-            arrayObjetos.push(newObj)
-    
-            /* Apaga localStorage para receber array atualizado com cards antigos e novos */
+            arrayDeTarefas.push(novaTarefa)
             localStorage.removeItem('tarefas');
-            /* Insere o array temporario convertido em JSON no localStorage */
-            localStorage.setItem('tarefas', JSON.stringify(arrayObjetos));
-                        //passa a data de termino para os cards criados
-  
+            localStorage.setItem('tarefas', JSON.stringify(arrayDeTarefas));
+
 
         } else {
-            arrayObjetos.push(
+            arrayDeTarefas.push(
                 {
-                    id: indexCard,
-                    tarefa: inputNovaTarefa.value,
-                    termino: dataFormatada,
-                    lastIndex: indexCard
+                id: indexCard,
+                tarefa: inputNovaTarefa.value,
+                termino: dataFormatada,
+                lastIndex: indexCard
                 }
             );
-
-            /* Apaga localStorage para receber array atualizado com cards antigos e novos */
             localStorage.removeItem('tarefas');
-            /* Insere o array temporario convertido em JSON no localStorage */
-            localStorage.setItem('tarefas', JSON.stringify(arrayObjetos));
-            indexCard = arrayObjetos[0].id;
+            localStorage.setItem('tarefas', JSON.stringify(arrayDeTarefas));
+            indexCard = arrayDeTarefas[0].id;
         }   
         
-        
-   
         /* limpa o input para escrever uma nova tarefa */
         inputNovaTarefa.value="";
         dataFormatada="";

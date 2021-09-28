@@ -28,15 +28,15 @@
     <!-- campo para inserção de novas tarefas -->
     <main>
         <form class="nova-tarefa">
-            <div class="button-input"></div>
-            <!-- input para descrever a tarefa -->
-            <input type="text" placeholder="Nova tarefa" id="novaTarefa">
+            <div id="divErro">
+                <input type="text" placeholder="Nova tarefa" id="novaTarefa">
+                <span id="msgErro"></span>
+            </div>
             <div class="mediaQuerie">
                 <div class = "datatermino">
                     <p class= "dataDeTermino">Data de termino:</p>
                     <input type="date" class= "dataDeTermino" placeholder="data de termino" id= "dataDeTermino" required>
                 </div>
-                <!-- botão de + para adicionar a tarefa na lista -->
                 <button id="btn">
                     <img src="./assets/plus.png" alt="Adicionar Tarefa">
                 </button>
@@ -53,8 +53,8 @@
                         <div class="descripcion">
                             <p class="nome">Minha bela tarefa</p>
                         <div class="dataEcheck">
-                            <p class="timestamp">Criada: 19/04/20</p>
-                            <input disabled type="checkbox" name="" id="">
+                            <p class="timestamp"></p>
+                            <input disabled type="checkbox" id="">
                         </div>
                     </div>
                 </li> -->
@@ -62,13 +62,12 @@
 
              <!-- div com as tarefas concluídas -->
             <div class="titulo-concluida" id="TarefasFeitas">
-            <!-- <li class="tarefa">
+            <!--<li class="tarefa">
                     <div id="div-cut"></div>
                     <div class="not-done"></div>
                     <div class="descripcion">
                         <p class="nome">Minha bela tarefa</p>
-                        <div class="dataEcheck">
-                        </div>
+                        <div class="dataEcheck"></div>
                     </div>
                 </li> -->
             </div>

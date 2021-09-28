@@ -4,12 +4,9 @@
 header {
     display: flex;
     flex-direction: row;
-
     background: #43cea2;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    /* background: linear-gradient(90deg, var(--primary), var(--secondary)); */
     box-shadow: 0px 3px 5px lightgrey;
     padding: 0 3em;
     margin-bottom: 2em;
@@ -25,8 +22,6 @@ nav {
     margin-left: 1rem;
     margin-top: 1rem;
     display: flex;
-  
-    
 }
 
 
@@ -38,7 +33,6 @@ main{
 }
 
 
-
 a {
     margin-left: 1rem;
     display: inline-block;
@@ -46,6 +40,10 @@ a {
     padding: .7em 1em;
     text-decoration: none;
     color: white
+}
+
+a:hover{
+    color: #43cea2;
 }
 
 p{
@@ -56,6 +54,7 @@ p{
 p.timestamp,
 p#dataFim{
     font-size: 0.8em;
+    color: rgba(14, 13, 13, 0.5);
 }
 
 .user-info {
@@ -93,6 +92,7 @@ p#dataFim{
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     background-color: white;
     width: 70%;
     margin: 0 10%;
@@ -104,11 +104,12 @@ p#dataFim{
 
 .nova-tarefa input[type=text] {
     border: none;
-    width: 70%;
-    border-bottom: 1px solid lightgrey;
+    width: 90%;
+    border-bottom: 1px solid #18899d;
     border-radius: 0;
     padding: .3em;
     font-size: 1.1em;
+    margin: 0 1em;
 }
 
 .nova-tarefa input:focus {
@@ -139,7 +140,7 @@ p#dataFim{
     width: 100%;
 }
 
-.not-done, .button-input {
+.not-done/* , .button-input  */{
     width: 2em;
     height: 2em;
     border-radius: 50%;
@@ -162,8 +163,26 @@ p#dataFim{
     display: flex;
     flex-direction: row;
     align-items: center;
-    
 }
+
+/* input de data */
+#dataDeTermino{
+    border-radius: 5px;
+    border: 1px #18899d solid;
+}
+
+
+#divErro{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#msgErro{
+    color: red;
+    margin-left: 1.2em;
+}
+
 
 /* Lista de tarefas ----------------------------------------------------------- */
 
@@ -186,7 +205,6 @@ p#dataFim{
     
 }
 
-
 /* div de CADA card */
 .tarefa {
     display: flex;
@@ -195,7 +213,6 @@ p#dataFim{
     margin: 0em 1em;  
 }
 
-
 /* botao para excluir */
 .tarefa .not-done {
     position: relative;
@@ -203,7 +220,7 @@ p#dataFim{
     width: 1.3em;
     bottom: -2em;
     left: 5em;
-    background-color: rgb(104, 104, 104);
+    background-color: rgb(104, 104, 104, 0.6);
     z-index: 2;
     transition: background-color 200ms linear;
 }
@@ -234,25 +251,6 @@ p#dataFim{
     height: 0;
 }
 
-/* .tarefa .timestamp {
-    font-size: 1em;
-    color: rgb(134, 134, 134);
-
-} */
-
-
- /* div que contem a data e o checkbox*/
-/* .dataEcheck{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin-top: -4em;
-    margin-left: -4em; 
-    font-size: 12px;
-} */
-
 
 
 /* Tarefas concluídas ----------------------------------------------------------- */
@@ -266,15 +264,6 @@ p#dataFim{
     list-style: none;
  
 }
-
-/* .tarefas-pendentes,
-.titulo-concluida{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 50%;
-    height: 300px;
-} */
-
 
 .titulo-concluida .not-done {
     background-color: lightgrey;
@@ -295,6 +284,7 @@ p#dataFim{
     text-decoration: line-through;
 }
 
+
 input[type="checkbox"]:disabled {
     background-color: initial;
 }
@@ -303,6 +293,7 @@ input[type=checkbox] {
     position: relative;
     cursor: pointer;
     margin-left: 2em;
+
 }
 
 input[type=checkbox]:before {
@@ -313,15 +304,9 @@ input[type=checkbox]:before {
     height: 16px;
     top: 0;
     left: 0;
-    border: 2px solid rgb(139, 167, 140);
+    border: 2px solid #18899d;
     border-radius: 3px;
-    background-color: rgb(139, 167, 140);
-}
-
-
-/* p de data de termoino do formulario*/
-.dataDeTermino{
-    margin-left: 3em;
+    background-color: #18899d;
 }
 
 .rodapeCard{
@@ -329,54 +314,46 @@ input[type=checkbox]:before {
     flex-direction: row;
     align-items: center;
     margin-top: -3.5em;
-    
 }
 
 
 /* tablets e larger smartphones */
-@media screen and (max-width: 481px) {
+@media screen and (max-width: 769px) {
 
     #logo {
         width: 30%;
         margin-left: -2em;
     }
-
     nav {
         margin-left: -0.6rem;
         margin-top: 1rem;
-
     }
     .user-info {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
     }
     .user-info p{
         display: none;
     }
-
     .user-info .user-image {
         height: 2em;
         width: 2em;
         margin-top: 2em;
         margin-left: 2em;
     }
-
     .nova-tarefa {
         display: flex;
         flex-direction: column;
         width: 90%;
         margin: 0;
     }
-
     .button-input{
         display: none;
     }
     p.dataDeTermino{
         font-size: 1em;
     }
-   
     .mediaQuerie{
         display: flex;
         flex-direction: row;
