@@ -85,6 +85,7 @@ const stopEffect = () => {
     document.querySelectorAll("input").forEach(el => el.disabled = false)
     document.querySelector(".blur").style.display = "none"
     document.querySelector(".percent").style.display = "none"
+    document.querySelector(".canvas").style.display = "none"
 }
 
 //Chama o círculo
