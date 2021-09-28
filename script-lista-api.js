@@ -3,6 +3,14 @@ let tarefasFeitas = document.getElementById('TarefasFeitas');
 let username = document.querySelector('.user-info > p')
 let user = JSON.parse(sessionStorage.getItem('user'));
 let nav = document.getElementById('nav-lista');
+
+axios.get("https://dog.ceo/api/breeds/image/random")
+    .then(url => {
+        const img = document.createElement("img")
+        img.setAttribute("src", url.data.message)
+        document.querySelector(".user-image").appendChild(img)
+})
+
 window.onload = _ => {
     getTarefas();
     // Define nomedousuário
