@@ -105,18 +105,19 @@ p#dataFim{
 .nova-tarefa input[type=text] {
     border: none;
     width: 90%;
-    border-bottom: 1px solid #18899d;
+    border-bottom: 1px solid #a5b2b4;
     border-radius: 0;
     padding: .3em;
     font-size: 1.1em;
-    margin: 0 1em;
+    margin-right: 1em;
+    margin-left: 0.5em;
 }
 
 .nova-tarefa input[type="date"] {
     background: #43cea2;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #185b9d8f, #43cea275); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    padding: 0.1em 0.5em;
+    background: -webkit-linear-gradient(to right, #185b9d8f, #43cea275);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185b9d6e, #43cea25e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 0.2em 0.5em;
     color: white;
     border: none;
     outline: none;
@@ -184,12 +185,6 @@ p#dataFim{
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-/* input de data */
-#dataDeTermino{
-    border-radius: 5px;
-    border: 1px #18899d solid;
 }
 
 
@@ -382,6 +377,18 @@ input[type=checkbox]:before {
         display: flex;
         flex-direction: row;
         margin-top: 1em;
+    }
+
+    /* texto da tarefa */
+    .tarefa .descripcion {
+    width: 250px;
+    height: 250px;
+    }
+    #div-cut{
+        width: 25px;
+        height: 55px;
+        bottom: -4em;
+        left: -7.5em; 
     }
 
   }
