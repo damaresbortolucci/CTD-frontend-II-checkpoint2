@@ -43,7 +43,7 @@ function criaItem(id, tarefa) {
                 <span class="nome">${tarefa}</span>
             </div>
             <div class="dataEcheck">
-                <p class="timestamp">Criada: 19/04/20</p>
+                <p class="timestamp"></p>
             </div>
         </div>
     </li>`

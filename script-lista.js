@@ -58,6 +58,7 @@ function criarCards(id, inputTarefa, inputData){
     p.setAttribute('class', 'nome' )
     p.innerHTML = inputTarefa
  
+
     const dataEcheck = document.createElement('div') //div que contem a data de criação e checkbox
     dataEcheck.setAttribute('class', 'dataEcheck')
 
@@ -69,10 +70,14 @@ function criarCards(id, inputTarefa, inputData){
     let d = n.getDate();
     p2.innerHTML = 'Criação: ' + d + "/" + m + "/" + y;
 
-
     const p3 = document.createElement('p') // data de termino
     p3.setAttribute('id', 'dataFim')
     p3.innerHTML = "Término: " + inputData
+
+
+  /*   const divCheck = document.createElement('div')
+    divCheck.appendChild(inputCheckBox) */
+
 
 
     const inputCheckBox = document.createElement('input') // checkbox
@@ -80,19 +85,39 @@ function criarCards(id, inputTarefa, inputData){
     inputCheckBox.setAttribute('id', 'checkbox')
     inputCheckBox.setAttribute('onclick', 'riscar('+id+')')
 
+
+    const divRodape = document.createElement('div')
+    divRodape.setAttribute('class', 'rodapeCard')
+
+    divRodape.appendChild(dataEcheck)
+    divRodape.appendChild(inputCheckBox)
+
+
+
     const divCorte = document.createElement("div")
     divCorte.setAttribute("id", "div-cut")
 
+
+
+
     btnNotDone.appendChild(xButton)
+    divNotDone.appendChild(btnNotDone)
+
+    divDescricao.appendChild(p)
+
     dataEcheck.appendChild(p2)
     dataEcheck.appendChild(p3)
-    dataEcheck.appendChild(inputCheckBox)
-    divDescricao.appendChild(p)
-    divDescricao.appendChild(dataEcheck)
-    divNotDone.appendChild(btnNotDone)
+
+    divRodape.appendChild(dataEcheck)
+    divRodape.appendChild(inputCheckBox)
+    
+    
+    
     li.appendChild(divCorte)
     li.appendChild(divNotDone)
     li.appendChild(divDescricao)
+    li.appendChild(divRodape)
+
     ulFazer.appendChild(li)
    
 }
@@ -100,7 +125,7 @@ function criarCards(id, inputTarefa, inputData){
 //CRIAR CARDS DE TAREFAS RISCADAS COM O CHECKBOX (FEITAS)
 function criarCardFeitas(input){
     ulFeitas.innerHTML += `
-    <li class="tarefa">
+        <li class="tarefa">
             <div id="div-cut"></div>
             <div class="not-done"></div>
             <div class="descripcion">

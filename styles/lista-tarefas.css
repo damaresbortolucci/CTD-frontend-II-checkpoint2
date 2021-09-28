@@ -3,18 +3,30 @@
 
 header {
     display: flex;
+    flex-direction: row;
+
     background: #43cea2;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     /* background: linear-gradient(90deg, var(--primary), var(--secondary)); */
     box-shadow: 0px 3px 5px lightgrey;
     padding: 0 3em;
     margin-bottom: 2em;
+    width: 100%;
 }
 
+
 #logo {
-    height: 70px;
+    height: 5em;
+}
+
+nav {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    display: flex;
+  
+    
 }
 
 
@@ -25,11 +37,7 @@ main{
     align-content: center;
 }
 
-nav {
-    margin-left: 1rem;
-    margin-top: 1rem;
-    display: flex;
-}
+
 
 a {
     margin-left: 1rem;
@@ -42,13 +50,19 @@ a {
 
 p{
     margin: 0;
+    font-size: 1.2em;
+}
+
+p.timestamp,
+p#dataFim{
+    font-size: 0.8em;
 }
 
 .user-info {
     display: flex;
     align-items: center;
     margin-left: auto;
-    color: rgb(223, 223, 223);
+    color: white;
 }
 
 .user-info p {
@@ -144,6 +158,13 @@ p{
 }
 
 
+.mediaQuerie{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
 /* Lista de tarefas ----------------------------------------------------------- */
 
 #div-cut{
@@ -161,18 +182,8 @@ p{
     width: 75vw;
     margin: 4rem 0;
     display: flex;
-}
-
-
-/* div que contem grupo de card de pendentes e div com cards concluidas */
-.tarefas-pendentes,
-.titulo-concluida {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    width: 50%;
+    flex-direction: column;
+    
 }
 
 
@@ -181,7 +192,7 @@ p{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.7em;
+    margin: 0em 1em;  
 }
 
 
@@ -196,6 +207,7 @@ p{
     z-index: 2;
     transition: background-color 200ms linear;
 }
+
 
 .tarefa .not-done:hover {
     background-color: #19547b;
@@ -222,36 +234,47 @@ p{
     height: 0;
 }
 
-.tarefa .timestamp {
+/* .tarefa .timestamp {
     font-size: 1em;
     color: rgb(134, 134, 134);
-    /* Dâmares - Acrescentei 22/09 */
-}
+
+} */
 
 
  /* div que contem a data e o checkbox*/
-.dataEcheck{
+/* .dataEcheck{
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     position: relative;
-    top: 125px;
-    left: 8.2px;
+    margin-top: -4em;
+    margin-left: -4em; 
     font-size: 12px;
-}
+} */
 
 
 
 /* Tarefas concluídas ----------------------------------------------------------- */
+/* div que contem grupo de card de pendentes e div com cards concluidas */
+.tarefas-pendentes,
+.titulo-concluida {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+ 
+}
 
 /* .tarefas-pendentes,
 .titulo-concluida{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     width: 50%;
     height: 300px;
 } */
+
 
 .titulo-concluida .not-done {
     background-color: lightgrey;
@@ -279,6 +302,7 @@ input[type="checkbox"]:disabled {
 input[type=checkbox] {
     position: relative;
     cursor: pointer;
+    margin-left: 2em;
 }
 
 input[type=checkbox]:before {
@@ -295,11 +319,73 @@ input[type=checkbox]:before {
 }
 
 
-
-
-
-
-/* p de data de termoino */
+/* p de data de termoino do formulario*/
 .dataDeTermino{
     margin-left: 3em;
 }
+
+.rodapeCard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -3.5em;
+    
+}
+
+
+/* tablets e larger smartphones */
+@media screen and (max-width: 481px) {
+
+    #logo {
+        width: 30%;
+        margin-left: -2em;
+    }
+
+    nav {
+        margin-left: -0.6rem;
+        margin-top: 1rem;
+
+    }
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .user-info p{
+        display: none;
+    }
+
+    .user-info .user-image {
+        height: 2em;
+        width: 2em;
+        margin-top: 2em;
+        margin-left: 2em;
+    }
+
+    .nova-tarefa {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0;
+    }
+
+    .button-input{
+        display: none;
+    }
+    p.dataDeTermino{
+        font-size: 1em;
+    }
+   
+    .mediaQuerie{
+        display: flex;
+        flex-direction: row;
+        margin-top: 1em;
+    }
+
+  }
+  
+
+  
+
+  

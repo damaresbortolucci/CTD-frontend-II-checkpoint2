@@ -31,14 +31,16 @@
             <div class="button-input"></div>
             <!-- input para descrever a tarefa -->
             <input type="text" placeholder="Nova tarefa" id="novaTarefa">
-            <div class = "datatermino">
-                <p class= "dataDeTermino">Data de termino:</p>
-                <input type="date" class= "dataDeTermino" placeholder="data de termino" id= "dataDeTermino" required>
+            <div class="mediaQuerie">
+                <div class = "datatermino">
+                    <p class= "dataDeTermino">Data de termino:</p>
+                    <input type="date" class= "dataDeTermino" placeholder="data de termino" id= "dataDeTermino" required>
+                </div>
+                <!-- botão de + para adicionar a tarefa na lista -->
+                <button id="btn">
+                    <img src="./assets/plus.png" alt="Adicionar Tarefa">
+                </button>
             </div>
-            <!-- botão de + para adicionar a tarefa na lista -->
-            <button id="btn">
-                <img src="./assets/plus.png" alt="Adicionar Tarefa">
-            </button>
         </form>
 
         <!-- div com as tarefas a fazer e concluídas -->
@@ -60,7 +62,7 @@
 
              <!-- div com as tarefas concluídas -->
             <div class="titulo-concluida" id="TarefasFeitas">
-               <!--  <li class="tarefa">
+            <!-- <li class="tarefa">
                     <div id="div-cut"></div>
                     <div class="not-done"></div>
                     <div class="descripcion">
