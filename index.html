@@ -8,16 +8,25 @@
     <link rel="stylesheet" href="./styles/loading.css">
     <link rel="stylesheet" href="./styles/login.css">
     <title>ToDo</title>
+    <script src="https://kit.fontawesome.com/e2a691ca6b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+  <div class="toggle-container">
+    <input type="checkbox" id="checkbox" class="checkbox">
+    <label for="checkbox" class="label">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+      <div class="circle"></div>
+    </label>
+  </div>
   
   <form>
     <h1>Login</h1>
 
     <div class="input-container">
       <input required type="text" id="username">
-      <label>Usuário</label>
+      <label class="lb-input">Usuário</label>
       <div class="underline"></div>
       <span class="error-message" id="error-user">teste</span>
     </div>
@@ -25,7 +34,7 @@
 
     <div class="input-container">
       <input required type="password" id="password">
-      <label>Senha</label>
+      <label class="lb-input">Senha</label>
       <div class="underline"></div>
       <span class="error-message" id="error-password">teste</span>
     </div>
@@ -37,6 +46,7 @@
     </div>
   </form>
   <script type="module" src="script-login.js"></script>
+  <script src="./darkmode.js"></script>
 
 </body>
 </html>

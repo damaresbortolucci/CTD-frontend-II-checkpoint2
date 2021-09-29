@@ -4,6 +4,10 @@
   --primary: #43cea2;
   --secondary: #185a9d;
   --app-grey: #e9e9e9;
+  --bg-dark: rgb(30, 30, 30);
+  --card-dark: rgb(50, 50, 50);
+  --input-dark: rgb(70, 70, 70);
+  --text-dark: rgb(172, 172, 172);
 }
 
 * {
@@ -16,10 +20,56 @@
 body {
   background-color: #F6F6F6;
   min-height: 100vh;
-  
 }
 
 button {
   border: none;
   border-radius: 3px;
+}
+
+.toogle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 50px;
+  width: 50px;
+  height: 26px;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox:checked + .label .circle {
+  transform: translate(24px);
+}
+
+.circle {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.2s linear;
+}
+
+.fa-moon {
+  color: #fff;
+}
+
+.fa-sun {
+  color: #f1c40f;
 }

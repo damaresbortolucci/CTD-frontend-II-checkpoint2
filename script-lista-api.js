@@ -38,6 +38,7 @@ async function getTarefas() {
 // Função para criar um item da lista
 function criaItem(id, tarefa) {
     const item = document.createElement('li')
+    // aqui onde está a classe .descripcion que eu queria aplicar o script de tema escuro
     item.innerHTML = `
     <li class="tarefa" id="${id}">
         <div id="div-cut"></div>

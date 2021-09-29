@@ -102,6 +102,37 @@ p#dataFim{
     z-index: 20;
 }
 
+header.darkmode {
+    box-shadow: none;
+}
+
+.nova-tarefa.darkmode {
+    background-color: var(--card-dark);
+    box-shadow: none;
+    color: var(--text-dark);
+}
+
+#novaTarefa.darkmode {
+    background-color: var(--input-dark);
+}
+
+#dataDeTermino.darkmode {
+    background-color: var(--input-dark);
+    color: var(--text-dark);
+}
+
+#btn img.darkmode {
+    filter: invert(100%);
+}
+
+body.darkmode {
+    background-color: var(--bg-dark);
+}
+
+.toggle-container {
+    margin: -2rem 1rem 1rem 1rem;
+}
+
 .nova-tarefa input[type=text] {
     border: none;
     width: 90%;
