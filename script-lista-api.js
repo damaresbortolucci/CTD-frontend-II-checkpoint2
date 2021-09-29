@@ -4,6 +4,7 @@ let username = document.querySelector('.user-info > p')
 let user = JSON.parse(sessionStorage.getItem('user'));
 let nav = document.getElementById('nav-lista');
 checkbox.checked = (sessionStorage.getItem('darkmode') == null) ? false : true;
+console.log(sessionStorage.getItem('darkmode'));
 let formApi = document.querySelector('form');
 let novaTarefaApi = document.getElementById('novaTarefa');
 let dataDeTerminoApi = document.getElementById('dataDeTermino');
@@ -13,12 +14,12 @@ let cardsAPI = document.querySelectorAll('.descripcion');
 let divtarefas = document.getElementById('tarefas');
 
 
-// axios.get("https://dog.ceo/api/breeds/image/random")
-//     .then(url => {
-//         const img = document.createElement("img")
-//         img.setAttribute("src", url.data.message)
-//         document.querySelector(".user-image").appendChild(img)
-// })
+axios.get("https://dog.ceo/api/breeds/image/random")
+    .then(url => {
+        const img = document.createElement("img")
+        img.setAttribute("src", url.data.message)
+        document.querySelector(".user-image").appendChild(img)
+})
 
 window.onload = _ => {
     getTarefas();
@@ -44,7 +45,6 @@ async function getTarefas() {
     });
     defineAll();
     cardsAPI = document.querySelectorAll('.descripcion');
-    console.log(cardsAPI);
     cardsAPI.forEach(card => applyDarkMode(card));
 }
 
