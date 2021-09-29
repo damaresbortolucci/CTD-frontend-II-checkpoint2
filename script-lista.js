@@ -134,6 +134,8 @@ function criarCards(id, inputTarefa, inputData){
     divTarefas.appendChild(divRodape)
     ulFazer.appendChild(divTarefas)
 
+    cardsUser = document.querySelectorAll('.descripcion');
+
 }
 
 //CRIAR CARDS DE TAREFAS RISCADAS COM O CHECKBOX (FEITAS)
