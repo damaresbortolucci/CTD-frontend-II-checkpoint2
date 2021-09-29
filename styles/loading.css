@@ -1,3 +1,4 @@
+/* Determina o tamanho da div que engloba toda a animação de loading */
 .canvas{
     width: 100%;
     bottom: 50%;
@@ -6,13 +7,14 @@
     display: flex;
   }
   
-  
+  /* Posiciona o canvas dentro da div */
   canvas{
     justify-content: center;
     align-items: center;
     margin: 0 auto;
   }
   
+  /* Estiliza os pontos que aparece no final do carregamento */
   .dots{
     position: absolute;
     width: 100vw;
@@ -24,12 +26,14 @@
     transition: color 0.5s ease-out;
   }
   
+  /* Anima os pontos criados durante a animação*/
   .dots span{
     transition: all 0.5s ease-out;
     margin-right: 0.65rem;
     opacity: .6;
   }
   
+  /* Estiliza e posiciona o progresso escrito*/
   .percent {
     position: absolute;
     font-weight: 400;
@@ -41,6 +45,7 @@
     opacity: 0.6;
   }
   
+  /* Deixa o blur com opacity e posciona*/
   .blur{
     width: 100%;
     height: 100vh;
