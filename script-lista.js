@@ -300,6 +300,7 @@ checkbox.addEventListener('change', function() {
 
 
 function applyDarkMode(element) {
+    cardsUser = document.querySelectorAll('.descripcion');
     (checkbox.checked) ? element.classList.add('darkmode') : element.classList.remove('darkmode');
 }
 
