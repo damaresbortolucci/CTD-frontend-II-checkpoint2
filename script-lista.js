@@ -10,6 +10,14 @@ let user = JSON.parse(sessionStorage.getItem('user'));
 let nav = document.getElementById('nav-tarefas')
 let msgErro = document.getElementById('msgErro')
 
+checkbox.checked = (sessionStorage.getItem('darkmode') == null) ? false : true;
+
+let form = document.querySelector('form');
+let btnImg = document.querySelector('#btn img');
+let header = document.querySelector('header');
+let cardsUser = document.querySelectorAll('.descripcion');
+let tarefas = document.getElementById('tarefas');
+
 
 window.onload = _ => {
     axios.get("https://dog.ceo/api/breeds/image/random")
@@ -40,6 +48,7 @@ window.onload = _ => {
             criarCardFeitas(element.tarefa);
         });
     }
+    defineAll();
 }
 
 
@@ -59,6 +68,7 @@ function criarCards(id, inputTarefa, inputData){
 
     const divDescricao = document.createElement('div') // div que contem o p com descrição da tarefa
     divDescricao.setAttribute('class', 'descripcion')
+    applyDarkMode(divDescricao);
 
     const p = document.createElement('p') //descrição da tarefa
     p.setAttribute('class', 'nome' )
@@ -81,7 +91,7 @@ function criarCards(id, inputTarefa, inputData){
 
     const inputCheckBox = document.createElement('input') // checkbox
     inputCheckBox.setAttribute('type', 'checkbox')
-    inputCheckBox.setAttribute('id', 'checkbox')
+    inputCheckBox.setAttribute('id', 'checkboxCard')
     inputCheckBox.setAttribute('onclick', 'riscar('+id+')')
 
     const divRodape = document.createElement('div')
@@ -107,6 +117,7 @@ function criarCards(id, inputTarefa, inputData){
     divTarefas.appendChild(divDescricao)
     divTarefas.appendChild(divRodape)
     ulFazer.appendChild(divTarefas)
+
 }
 
 //CRIAR CARDS DE TAREFAS RISCADAS COM O CHECKBOX (FEITAS)
@@ -119,6 +130,8 @@ function criarCardFeitas(input){
                 <p class="nome">${input}</p>
             </div>
         </div>`
+
+        cardsUser = document.querySelectorAll('.descripcion');
 }
 
 
@@ -223,13 +236,13 @@ function mostrarModal(id){
 
   // riscar card pelo checkbox e passar para a lista de tarefas feitas abaixo
 function riscar(id){
-    let checkbox = document.querySelectorAll('#checkbox')
+    let checkboxCard = document.querySelectorAll('#checkboxCard')
     let ulPendentes = document.querySelectorAll('.tarefaFazer')
     let listaTarefas = JSON.parse(localStorage.getItem('tarefas'))
     
     for(let i=0; i < ulPendentes.length; i++){
         
-        if(checkbox[i].checked){
+        if(checkboxCard[i].checked){
 
             //criar ou atualizar os cards de tarefas riscadas
             let arrayFeitas =  JSON.parse(localStorage.getItem('tarefasFeitas'));
@@ -261,5 +274,26 @@ function riscar(id){
         }
     }
     document.location.reload(true);
+}
+
+checkbox.addEventListener('change', function() {
+    defineAll();
+    sessionStorage.setItem('darkmode', checkbox.checked);
+});
+
+
+function applyDarkMode(element) {
+    (checkbox.checked) ? element.classList.add('darkmode') : element.classList.remove('darkmode');
+}
+
+function defineAll() {
+    applyDarkMode(body);
+    applyDarkMode(inputDataDeTermino);
+    applyDarkMode(inputNovaTarefa);
+    applyDarkMode(btnImg);
+    applyDarkMode(header);
+    applyDarkMode(form);
+    cardsUser.forEach(card => applyDarkMode(card));
+    applyDarkMode(tarefas);
 }
 

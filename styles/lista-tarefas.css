@@ -114,6 +114,7 @@ header.darkmode {
 
 #novaTarefa.darkmode {
     background-color: var(--input-dark);
+    color: var(--text-dark);
 }
 
 #dataDeTermino.darkmode {
@@ -154,6 +155,27 @@ div.descripcion.darkmode .nome {
 
 #tarefas.darkmode .titulo-concluida li li .descripcion .nome {
     color: var(--card-dark);
+}
+
+#tarefas.darkmode .tarefas-pendentes #div-cut {
+    background-color: var(--bg-dark);
+}
+
+#tarefas.darkmode .titulo-concluida  #div-cut {
+    background-color: var(--bg-dark);
+}
+
+#tarefas.darkmode .titulo-concluida .descripcion {
+    background-color: gray;
+    box-shadow: none;
+}
+
+#tarefas.darkmode .titulo-concluida .descripcion .nome {
+    color: var(--card-dark);
+}
+
+#tarefas .timestamp, #tarefas #dataFim {
+    color: var(--text-dark);
 }
 
 
