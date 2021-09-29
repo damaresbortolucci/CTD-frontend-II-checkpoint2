@@ -129,6 +129,35 @@ body.darkmode {
     background-color: var(--bg-dark);
 }
 
+div.descripcion.darkmode {
+    background-color: var(--card-dark);
+    box-shadow: none;
+    color: white;
+}
+
+div.descripcion.darkmode .nome {
+    color: var(--text-dark);
+}
+
+#tarefas.darkmode .tarefas-pendentes li li #div-cut {
+    background-color: var(--bg-dark);
+}
+
+#tarefas.darkmode .titulo-concluida li li #div-cut {
+    background-color: var(--bg-dark);
+}
+
+#tarefas.darkmode .titulo-concluida li li .descripcion {
+    background-color: gray;
+    box-shadow: none;
+}
+
+#tarefas.darkmode .titulo-concluida li li .descripcion .nome {
+    color: var(--card-dark);
+}
+
+
+
 .toggle-container {
     margin: -2rem 1rem 1rem 1rem;
 }

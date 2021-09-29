@@ -3,13 +3,22 @@ let tarefasFeitas = document.getElementById('TarefasFeitas');
 let username = document.querySelector('.user-info > p')
 let user = JSON.parse(sessionStorage.getItem('user'));
 let nav = document.getElementById('nav-lista');
+checkbox.checked = (sessionStorage.getItem('darkmode') == null) ? false : true;
+let formApi = document.querySelector('form');
+let novaTarefaApi = document.getElementById('novaTarefa');
+let dataDeTerminoApi = document.getElementById('dataDeTermino');
+let btnImgApi = document.querySelector('#btn img');
+let headerApi = document.querySelector('header');
+let cardsAPI = document.querySelectorAll('.descripcion');
+let divtarefas = document.getElementById('tarefas');
 
-axios.get("https://dog.ceo/api/breeds/image/random")
-    .then(url => {
-        const img = document.createElement("img")
-        img.setAttribute("src", url.data.message)
-        document.querySelector(".user-image").appendChild(img)
-})
+
+// axios.get("https://dog.ceo/api/breeds/image/random")
+//     .then(url => {
+//         const img = document.createElement("img")
+//         img.setAttribute("src", url.data.message)
+//         document.querySelector(".user-image").appendChild(img)
+// })
 
 window.onload = _ => {
     getTarefas();
@@ -33,6 +42,10 @@ async function getTarefas() {
             tarefasFazer.appendChild(criaItem(todo.id, todo.title));
         }
     });
+    defineAll();
+    cardsAPI = document.querySelectorAll('.descripcion');
+    console.log(cardsAPI);
+    cardsAPI.forEach(card => applyDarkMode(card));
 }
 
 // Função para criar um item da lista
@@ -73,4 +86,28 @@ function excluirTarefa(id) {
                 }
             }
         }))
+}
+
+// evento para mudar o tema com base no checkbox
+checkbox.addEventListener('change', function() {
+    defineAll();
+    sessionStorage.setItem('darkmode', checkbox.checked);
+});
+
+//funçao para definir todos os elemetos desejados
+function defineAll() {
+    applyDarkMode(body);
+    applyDarkMode(formApi);
+    applyDarkMode(novaTarefaApi);
+    applyDarkMode(dataDeTerminoApi);
+    applyDarkMode(btnImgApi);
+    applyDarkMode(headerApi);
+    //a função não aplica os cards pois está retornando undefined
+    cardsAPI.forEach(card => applyDarkMode(card));
+    applyDarkMode(divtarefas);
+}
+
+// Função que aplica/remove a classe darkmode para aplicar a estilização no css
+function applyDarkMode(element) {
+    (checkbox.checked) ? element.classList.add('darkmode') : element.classList.remove('darkmode');
 }
