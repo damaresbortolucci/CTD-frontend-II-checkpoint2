@@ -73,18 +73,18 @@ concluida (através do check-box).
 
   ### Funcionamento da aplicação:
 
-![grab-landing-page](https://psv4.userapi.com/c537232/u307536254/docs/d23/5ad58aa11d05/gif_checkpoint-2-segundogif.gif?extra=QNYLRa9EJDq0MNCc21DKmKKZAHT1SzI4x2qn9v-7AABYeICkfY1U1NILzouKU3DcCVj0FdfIeC5GpQDOhj5--2XWwik5pzBQnjGfguWKxPZ-wN4nL_okDCASJoxXexkv9f3eh5DXBuTxdJ9m4wUQrKhP4Yc)
-  ### Usuário para teste:
-  Login:Bret
-  
-  Senha:Bret
-
-
+![grab-landing-page](https://psv4.userapi.com/c536436/u307536254/docs/d50/44ede83ffbeb/gif_checkpoint-2-terceiro.gif?extra=xA7CXv6hgEP9E_GLXjg1_BaWx3uGjGYhBy3XSmsvtwsLJ-AHL5O--_7BLlrrTVEu9Wcduf8FrQ21YbXJP5WkOmS6Yq2P0oem5D5SNvz1t4Sa7Ay-17hCKW3ymCqaI3n-20zDsfO2azgOp2xfkImiJhJiEzY)
+ ```
+ Informações para teste:
+ 
+ link no github pages: https://damaresbortolucci.github.io/CTD-frontend-II-checkpoint2/
+ 
+ Usuário para teste:
+ Login:Leopoldo_Corkery
+ Senha:Leopoldo_Corkery
+```
 ### Ressalva final
 Nesse projeto mesclamos conhecimentos como a utilização de APIs, DOM, localstorage, responsibilidade, validação de dados, utilização de datas por meio do JavasCript e principalmente muito trabalho em equipe.
-
-Teste o projeto no Github Pages!
-
 
 ### Projeto realizado por:
 - [Dâmares Bortolucci](https://github.com/damaresbortolucci)
